@@ -5,7 +5,7 @@ pygame.font.init()
 
 class button():
   """class for simplifying the use of buttons"""
-  def __init__(self, real_col, change_col, x, y, w, h, text, text_col=(0,0,0), font_size=(30), wrapping=0, center=True):
+  def __init__(self, real_col, change_col, x, y, w, h, text, text_col=(0,0,0), font_size=(30), wrapping=0, center=True, alpha=255):
     arial = pygame.font.SysFont('Arial', font_size)
     self.real_col = real_col
     self.change_col = change_col
@@ -14,6 +14,8 @@ class button():
     self.center = center
     self.plain_text = text
     self.pressed = False
+    self.alpha = alpha
+
 
     #text wrapping inside the button
     if wrapping:
@@ -26,6 +28,7 @@ class button():
 
 
   def draw(self, DISPLAY):
+    
     pygame.draw.rect(DISPLAY, self.colour, self.rect)
 
     #centering the text in the middle of the button

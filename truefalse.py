@@ -6,13 +6,13 @@ FONT = pygame.font.SysFont('Arial', 32)
 
 class tf():
     '''class for true/false buttons'''
-    def __init__(self, DISPLAY, x, y, radius, text):
+    def __init__(self, DISPLAY, x, y, radius, text, col):
         self.x = x
         self.y = y
         self.display = DISPLAY
         self.active = False
-        self.col = (100,100,100)
-        self.real_col = (100,100,100)
+        self.col = col
+        self.real_col = self.col
         self.change_col = (190,0, 230)
         self.text = text = FONT.render(text, True, (0,0,0))
         self.radius = radius

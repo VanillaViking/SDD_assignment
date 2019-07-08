@@ -6,13 +6,14 @@ SFONT = pygame.font.SysFont('Arial', 20)
 
 class text_input():
     """text input class"""
-    def __init__(self, DISPLAY,x, y, w, h, text =''):
+    def __init__(self, DISPLAY,x, y, w, h, text ='',text_col=(0,0,0)):
         self.display = DISPLAY
         self.rect = pygame.Rect(x, y, w, h)
         self.active = False
         self.colour = (200,200,200)
         self.text = text
-        self.text_surface = FONT.render(text,True, (0,0,0) )
+        self.text_surface = FONT.render(text,True, text_col)
+        self.text_col = text_col
     
     def activate(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -34,7 +35,7 @@ class text_input():
                     self.colour = (200,200,200)
                 else:
                     self.text += event.unicode
-                self.text_surface = FONT.render(self.text, True, (0,0,0))
+                self.text_surface = FONT.render(self.text, True,self.text_col)
 
     def draw(self):
         self.display.blit(self.text_surface, (self.rect.x+5,self.rect.y+5))

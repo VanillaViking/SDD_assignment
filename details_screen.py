@@ -7,33 +7,36 @@ arial = pygame.font.SysFont('Arial', 30)
 #function called whenever screen needs to be drawn
 def draw(DISPLAY):
     #for error msg
-    count = 181
-    clr_val = 0
+    count = 241
 
     cont_button = button([200,200,200], (190,0, 230), (8*DISPLAY.get_width() /9) - 100, ((6 * DISPLAY.get_height())/7), 200, 75, "Continue") #continue
-    doubles = tf(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5, 10, "") #whether game is doubles
+    doubles = tf(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5, 10, "", (255,255,255)) #whether game is doubles
     
-    #player name fields
-    player1_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 100 - 37, 350, 75)
-    player2_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 200-37, 350, 75)
+    bg_image = pygame.image.load("tennnis.jpg")
+    pygame.transform.scale(bg_image, (DISPLAY.get_width(),DISPLAY.get_height()))
 
-    sets = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 300-37, 100, 75)
+    #player name fields
+    player1_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 100 - 37, 350, 75,"",(255,255,255))
+    player2_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 200-37, 350, 75,"",(255,255,255))
+
+    sets = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 300-37, 100, 75,"",(255,255,255))
 
     #text
-    doubles_text = arial.render("Doubles:", True, (0,0,0))
+    doubles_text = arial.render("Doubles:", True, (255,255,255))
 
-    player1_text = arial.render("Player 1:", True, (0,0,0))
-    player2_text = arial.render("Player 2:", True, (0,0,0))
+    player1_text = arial.render("Player 1:", True, (255,255,255))
+    player2_text = arial.render("Player 2:", True, (255,255,255))
 
-    team1_text = arial.render("Team 1:", True, (0,0,0))
-    team2_text = arial.render("Team 2:", True, (0,0,0))
+    team1_text = arial.render("Team 1:", True, (255,255,255))
+    team2_text = arial.render("Team 2:", True, (255,255,255))
 
-    sets_text = arial.render("No. of sets:", True, (0,0,0))
+    sets_text = arial.render("No. of sets:", True, (255,255,255))
     while True:
-        pygame.display.update()
+        pygame.display.update([cont_button.rect, player1_name.rect, player2_name.rect, sets.rect, player1_text.get_rect(), player2_text.get_rect()])
         DISPLAY.fill((255,255,255))
 
         #drawing all of the objects on to the screen
+        DISPLAY.blit(bg_image, (0,0))
         cont_button.draw(DISPLAY)
         doubles.draw(False)
         DISPLAY.blit(doubles_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - doubles_text.get_height()/2))
@@ -70,12 +73,8 @@ def draw(DISPLAY):
                         count = 0
                         clr_val = 0
         #error msg fades away nicely.
-        if count < 180:
-            DISPLAY.blit(SFONT.render("Enter valid inputs", True, (255,clr_val,clr_val)),((1920/2) -(149/2), 750))
-            if count > 60:
-                clr_val += 2
-                if clr_val > 255:
-                    clr_val = 255
+        if count < 200:
+            DISPLAY.blit(SFONT.render("Enter valid inputs", True, (255,0,0)),((DISPLAY.get_width()/2) -(149/2), (DISPLAY.get_height() *2)/3))
 
             count += 1
 

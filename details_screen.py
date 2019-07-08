@@ -9,7 +9,7 @@ def draw(DISPLAY):
     #for error msg
     count = 241
 
-    cont_button = button([200,200,200], (190,0, 230), (8*DISPLAY.get_width() /9) - 100, ((6 * DISPLAY.get_height())/7), 200, 75, "Continue") #continue
+    cont_button = button((255,255,255,100), (255,255, 255,190), (2*DISPLAY.get_width() /3) - 100, ((2 * DISPLAY.get_height())/3)-(37), 200, 75, "Continue",(0,0,0,255)) #continue
     doubles = tf(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5, 10, "", (255,255,255)) #whether game is doubles
     
     bg_image = pygame.image.load("tennnis.jpg")
@@ -32,7 +32,7 @@ def draw(DISPLAY):
 
     sets_text = arial.render("No. of sets:", True, (255,255,255))
     while True:
-        pygame.display.update([cont_button.rect, player1_name.rect, player2_name.rect, sets.rect, player1_text.get_rect(), player2_text.get_rect()])
+        pygame.display.update()
         DISPLAY.fill((255,255,255))
 
         #drawing all of the objects on to the screen

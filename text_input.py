@@ -10,7 +10,7 @@ class text_input():
         self.display = DISPLAY
         self.rect = pygame.Rect(x, y, w, h)
         self.active = False
-        self.colour = (200,200,200)
+        self.colour = (100,100,100)
         self.text = text
         self.text_surface = FONT.render(text,True, text_col)
         self.text_col = text_col
@@ -19,10 +19,10 @@ class text_input():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(event.pos):
                 self.active = True
-                self.colour = (100,100,100)
+                self.colour = (200,200,200)
             else:
                 self.active = False
-                self.colour = (200,200,200)
+                self.colour = (100,100,100)
         if event.type == pygame.KEYDOWN:
             if self.active:
                 if event.key == pygame.K_BACKSPACE:

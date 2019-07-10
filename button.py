@@ -5,7 +5,7 @@ pygame.font.init()
 
 class button():
   """class for simplifying the use of buttons"""
-  def __init__(self, real_col, change_col, x, y, w, h, text, text_col=(0,0,0,255), font_size=(30), wrapping=0, center=True):
+  def __init__(self, real_col, change_col, x, y, w, h, text, text_col=(0,0,0), font_size=(30), wrapping=0, center=True):
     arial = pygame.font.SysFont('Arial', font_size)
     self.real_col = real_col
     self.change_col = change_col

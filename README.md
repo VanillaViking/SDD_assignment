@@ -1,6 +1,7 @@
 # SDD_assignment
 Software Design Program
 
-To Run
+
+# Run
 
 python3 main.py

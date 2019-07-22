@@ -1,8 +1,8 @@
 import pygame, time
 pygame.init()
 
-display_width = 800
-display_height = 600
+display_width = 1920
+display_height = 1080
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption("TENNIS SCOREKEEPER")
 
@@ -35,8 +35,10 @@ def start_button_text():
 def options_text():
     text_display("Options", text_small, white)
 def startcommand():
+    pass
     #placeholder
 def optionscommand():
+    pass
     #placeholder
 
 def start_loop():
@@ -57,6 +59,7 @@ def start_loop():
             pygame.draw.rect(gameDisplay, gray,((display_width - 50)/2,(display_height - 100)/2,100,50))
             if click[0] == 1:
                 startcommand() ###Defines what happen when the button is pressed
+                return "start"
         ###Creates the start button
         else:
             pygame.draw.rect(gameDisplay, black,((display_width - 50)/2,(display_height - 100)/2,100,50))
@@ -65,6 +68,7 @@ def start_loop():
             pygame.draw.rect(gameDisplay, gray,((display_width - 50)/2,((display_height - 100)/2)+100,100,50))
             if click[0] == 1:
                 optionscommand() ###Defines what happen when the button is pressed
+                return "opts"
         ###Creates the options button
         else:
             pygame.draw.rect(gameDisplay, black,((display_width - 50)/2,((display_height - 100)/2)+100,100,50))    
@@ -91,6 +95,6 @@ def start_loop():
             #print(event)
         pygame.display.update()
         clock.tick(30) ##sets frame rate
-start_loop()
-pygame.quit() #quit command
-quit()
+#start_loop()
+#pygame.quit() #quit command
+#quit()

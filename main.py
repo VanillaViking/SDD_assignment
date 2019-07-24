@@ -1,14 +1,26 @@
 import pygame
 import details_screen
 import tennis_startscreen
+import options_screen
 
 pygame.init()
 
-DISPLAY = pygame.display.set_mode((1920,1080))
+#Get the default settings from the text file.
+for line in open("settings.txt"):
+    if "resolution" in line:
+        line = line.strip().split(",")
+        resolution = (int(line[1]),int(line[2]))
 
+DISPLAY = pygame.display.set_mode(resolution)
 
-#for game settings...
-if tennis_startscreen.start_loop() == "start":
-    player1_name, player2_name, sets = details_screen.draw(DISPLAY)
-else:
-    pass
+#----------------------------------------------------
+
+while True:
+    if tennis_startscreen.start_loop(DISPLAY) == "start":
+        player1_name, player2_name, sets = details_screen.draw(DISPLAY)
+        break
+    else:
+        if options_screen.draw(DISPLAY) == "exit":
+            pygame.QUIT
+            quit()
+

@@ -9,11 +9,11 @@ def draw(DISPLAY):
     #for error msg
     count = 241
 
-    cont_button = button((255,255,255,100), (255,255, 255,190), (2*DISPLAY.get_width() /3) - 100, ((2 * DISPLAY.get_height())/3)-(37), 200, 75, "Continue",(0,0,0,255)) #continue
+    cont_button = button((255,255,255,100), (255,255, 255,190), (4*DISPLAY.get_width() /5) - 100, ((4 * DISPLAY.get_height())/6)-(37), 200, 75, "Continue",(0,0,0,255)) #continue
     doubles = tf(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5, 10, "", (255,255,255)) #whether game is doubles
     
-    bg_image = pygame.image.load("tennnis.jpg")
-    pygame.transform.scale(bg_image, (DISPLAY.get_width(),DISPLAY.get_height()))
+    
+    bg_image = pygame.transform.scale(pygame.image.load("tennnis.jpg"), (DISPLAY.get_width(),DISPLAY.get_height()))
 
     #player name fields
     player1_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 100 - 37, 350, 75,"",(255,255,255))

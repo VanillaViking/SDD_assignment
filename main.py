@@ -15,7 +15,7 @@ DISPLAY = pygame.display.set_mode(resolution)
 
 #----------------------------------------------------
 
-while True:
+while True: #loops until player hits "start" in first screen or "save and exit" in options screen.
     if tennis_startscreen.start_loop(DISPLAY) == "start":
         player1_name, player2_name, sets = details_screen.draw(DISPLAY)
         break

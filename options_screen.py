@@ -8,7 +8,7 @@ small_font = pygame.font.SysFont('Arial', 20)
 #--------------------------------------------------
 
 def draw(DISPLAY):
-    reslist = ["1280x720","1920x1080"]
+    reslist = ["1280x720","1366x768","1920x1080"]
 
     #text surfaces.
     settings_text = large_font.render("SETTINGS ", True, (100,100,100))

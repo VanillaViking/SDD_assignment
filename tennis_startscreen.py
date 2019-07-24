@@ -87,6 +87,8 @@ def start_loop(gameDisplay):
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                pygame.QUIT
+                quit()
                 Exitgame = True
             #if event.type == pygame.KEYDOWN:
              #   if event.key == pygame.K_LEFT:

@@ -9,11 +9,14 @@ small_font = pygame.font.SysFont('Arial', 20)
 
 def draw(DISPLAY):
     reslist = ["1280x720","1366x768","1920x1080"]
+    #background
+    bg_image = pygame.transform.scale(pygame.image.load("tennnis.jpg"), (DISPLAY.get_width(),DISPLAY.get_height()))
+
 
     #text surfaces.
-    settings_text = large_font.render("SETTINGS ", True, (100,100,100))
-    settings_restext = medium_font.render("Resolution:", True, (0,0,0))
-    settings_changes_text = small_font.render("Changes take effect after restarting", True, (100,100,100))
+    settings_text = large_font.render("SETTINGS ", True, (200,200,200))
+    settings_restext = medium_font.render("Resolution:", True, (255,255,255))
+    settings_changes_text = small_font.render("Changes take effect after restarting", True, (200,200,200))
 
     #check which resolution the display is currently set to:
     for c,n in enumerate(reslist):
@@ -21,18 +24,18 @@ def draw(DISPLAY):
             res_numbers = reslist[c]
             break   
 
-    settings_res_numbers = small_font.render(res_numbers, True, (0,0,0) )
+    settings_res_numbers = small_font.render(res_numbers, True, (255,255,255) )
 
     #BUTTONS
-    exit_btn = button([200,200,200], (190,0, 230), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 85, 200, 75, "Save & Exit") #obj 0
-    cancel_btn = button([200,200,200], (190,0, 230), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 165, 200, 75, "Cancel")
+    exit_btn = button((255,255,255,100), (255,255, 255,190), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 85, 200, 75, "Save & Exit") #obj 0
+    cancel_btn = button((255,255,255,100), (255,255, 255,190), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 165, 200, 75, "Cancel")
 
-    left_btn = button([200,200,200], (190,0, 230), (1*DISPLAY.get_width()/2) - 125, (1 * DISPLAY.get_height()/4) - 25, 50, 50, "<") 
-    right_btn = button([200,200,200], (190,0, 230), (1*DISPLAY.get_width()/2) + 75, (1 * DISPLAY.get_height()/4) - 25, 50, 50, ">") 
+    left_btn = button((255,255,255,100), (255,255, 255,190), (1*DISPLAY.get_width()/2) - 125, (1 * DISPLAY.get_height()/4) - 25, 50, 50, "<") 
+    right_btn = button((255,255,255,100), (255,255, 255,190), (1*DISPLAY.get_width()/2) + 75, (1 * DISPLAY.get_height()/4) - 25, 50, 50, ">") 
     
     while not exit_btn.pressed and not cancel_btn.pressed:
         pygame.display.update()
-        DISPLAY.fill((255,255,255))
+        DISPLAY.blit(bg_image, (0,0))
         #draw all the buttons
         exit_btn.draw(DISPLAY)
         left_btn.draw(DISPLAY)
@@ -58,7 +61,7 @@ def draw(DISPLAY):
             if c-1 >= 0:
                 res_numbers = reslist[c-1]
                 c -=1
-                settings_res_numbers = small_font.render(res_numbers, True, (0,0,0) )
+                settings_res_numbers = small_font.render(res_numbers, True, (255,255,255) )
                 
                 
             left_btn.pressed = False
@@ -67,7 +70,7 @@ def draw(DISPLAY):
             if c+1 < len(reslist):
                 res_numbers = reslist[c+1]
                 c +=1
-                settings_res_numbers = small_font.render(res_numbers, True, (0,0,0) )
+                settings_res_numbers = small_font.render(res_numbers, True, (255,255,255) )
                 
                 
             right_btn.pressed = False

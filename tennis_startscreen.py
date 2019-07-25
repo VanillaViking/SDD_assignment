@@ -45,7 +45,7 @@ def start_loop(gameDisplay):
     #startx =  (gameDisplay.get_width() * 0.45)
     #starty = (gameDisplay.get_height() * 0.8)
     Exitgame = False
-    gameDisplay.fill(white) #Sets background color
+    gameDisplay.blit(pygame.transform.scale(pygame.image.load("tennnis.jpg"), (gameDisplay.get_width(),gameDisplay.get_height())), (0,0)) #Sets background color
     button_width = (gameDisplay.get_width() - 50)/2
     button_height = (gameDisplay.get_height() - 100)/2
     options_button_width = (gameDisplay.get_width() - 50)/2

@@ -1,9 +1,19 @@
+#!/usr/bin/env python
+
 import pygame
 import details_screen
 import tennis_startscreen
 import options_screen
+import os
+import sys
 
 pygame.init()
+
+def restart():
+    if sys.platform == "win32": #windows 
+        os.execl(sys.executable, sys.executable, *sys.argv)
+    else: #linux & macOS
+        os.execv(__file__, sys.argv)
 
 #Get the default settings from the text file.
 for line in open("settings.txt"):
@@ -22,5 +32,6 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
     else:
         if options_screen.draw(DISPLAY) == "exit":
             pygame.QUIT
+            restart() #restart so that any changes come into effect
             quit()
 

@@ -27,7 +27,7 @@ def draw(DISPLAY):
     settings_res_numbers = small_font.render(res_numbers, True, (255,255,255) )
 
     #BUTTONS
-    exit_btn = button((255,255,255,100), (255,255, 255,190), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 85, 200, 75, "Save & Exit") #obj 0
+    exit_btn = button((255,255,255,100), (255,255, 255,190), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 85, 200, 75, "Save & Restart", (0,0,0), 25) #obj 0
     cancel_btn = button((255,255,255,100), (255,255, 255,190), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 165, 200, 75, "Cancel")
 
     left_btn = button((255,255,255,100), (255,255, 255,190), (1*DISPLAY.get_width()/2) - 125, (1 * DISPLAY.get_height()/4) - 25, 50, 50, "<") 
@@ -80,5 +80,6 @@ def draw(DISPLAY):
     else:
         with open("settings.txt", "w") as f:
             f.write("resolution"+","+reslist[c].split("x")[0]+","+reslist[c].split("x")[1])
+            f.close()
         return "exit"
     

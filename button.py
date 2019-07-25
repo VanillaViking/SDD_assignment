@@ -14,12 +14,13 @@ class button():
     self.center = center
     self.plain_text = text
     self.pressed = False
+    self.wrapping = wrapping
 
 
     #text wrapping inside the button
-    if wrapping:
+    if self.wrapping:
       self.text = []
-      wrapped = textwrap.wrap(text, wrapping)
+      wrapped = textwrap.wrap(text, self.wrapping)
       for n in wrapped:
           self.text.append(arial.render(n, True, text_col))
     else:

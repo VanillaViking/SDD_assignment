@@ -74,7 +74,7 @@ def draw(DISPLAY):
                         clr_val = 0
         #error msg fades away nicely.
         if count < 200:
-            DISPLAY.blit(SFONT.render("Enter valid inputs", True, (255,0,0)),((DISPLAY.get_width()/2) -(149/2), (DISPLAY.get_height() *2)/3))
+            DISPLAY.blit(SFONT.render("Sets should be a number!", True, (255,0,0)),((DISPLAY.get_width()/2) -(149/2), (DISPLAY.get_height() *2)/3))
 
             count += 1
 

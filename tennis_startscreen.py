@@ -29,7 +29,7 @@ def text_display(gameDisplay, text, size, color): ###Instructions for displaying
     pygame.display.update()
 
 def start_message(gameDisplay):
-    text_display(gameDisplay, "Tennis Scorekeeper", text_large, black)
+    text_display(gameDisplay, "Tennis Scorekeeper", text_large, white)
 def start_button_text(gameDisplay):
     text_display(gameDisplay, "Start", text_small, white)
 def options_text(gameDisplay):

@@ -4,12 +4,17 @@ from text_input import *
 from truefalse import *
 arial = pygame.font.SysFont('Arial', 30)
 
+global N_sets
+global player1_name_text 
+global player2_name_text
+
 #function called whenever screen needs to be drawn
 def draw(DISPLAY):
     #for error msg
     count = 241
 
     cont_button = button((255,255,255,100), (255,255, 255,190), (4*DISPLAY.get_width() /5) - 100, ((4 * DISPLAY.get_height())/6)-(37), 200, 75, "Continue",(0,0,0,255)) #continue
+    back_button = button((255,255,255,100), (255,255, 255,190), (1*DISPLAY.get_width() /5) - 100, ((4 * DISPLAY.get_height())/6)-(37), 200, 75, "Back",(0,0,0,255)) #back
     doubles = tf(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5, 10, "", (255,255,255)) #whether game is doubles
     
     
@@ -38,6 +43,7 @@ def draw(DISPLAY):
         #drawing all of the objects on to the screen
         DISPLAY.blit(bg_image, (0,0))
         cont_button.draw(DISPLAY)
+        back_button.draw(DISPLAY)
         doubles.draw(False)
         DISPLAY.blit(doubles_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - doubles_text.get_height()/2))
         player1_name.draw()
@@ -55,6 +61,7 @@ def draw(DISPLAY):
 
         for event in pygame.event.get():
             cont_button.update(event)
+            back_button.update(event)
             doubles.activate(event)
             player1_name.activate(event)
             player2_name.activate(event)
@@ -66,12 +73,18 @@ def draw(DISPLAY):
             
             if cont_button.pressed:
                     try:
-                        int(sets.text)
-                        return [player1_name.text, player2_name.text, sets.text]
+                        #player1_name_text = player1_name.text
+                        #player2_name_text = player2_name.text
+                        #N_sets = int(sets.text)
+
+                        return [player1_name.text, player2_name.text, int(sets.text)]
                     except ValueError:
                         cont_button.pressed = False
                         count = 0
                         clr_val = 0
+            
+            if back_button.pressed:
+                return "back"
         #error msg fades away nicely.
         if count < 200:
             DISPLAY.blit(SFONT.render("Sets should be a number!", True, (255,0,0)),((DISPLAY.get_width()/2) -(149/2), (DISPLAY.get_height() *2)/3))

@@ -6,11 +6,11 @@ Software Design Program
 
 *Linux:*
 
-git clone https://github.com/VanillaViking/SDD_assignment.git
+`git clone https://github.com/VanillaViking/SDD_assignment.git`
 
-cd ~/SDD_assignment
+`cd ~/SDD_assignment`
 
-python3 main.py
+`python3 main.py`
 
 *Windows*
 

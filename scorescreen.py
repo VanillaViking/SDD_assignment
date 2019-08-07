@@ -50,7 +50,7 @@ def options_text(gameDisplay):
 #    pass
 #    #placeholder
 
-def start_loop(gameDisplay):
+def start_loop(gameDisplay, p1_name, p2_name):
     Exitgame = False
     
     score_list = ["Love", "15", "30", "40", "adv", "win"]
@@ -72,11 +72,11 @@ def start_loop(gameDisplay):
         pygame.display.update()
         gameDisplay.blit(bg, (0,0)) #Sets background img
        
-        textSurf, textRect = text_objects("Player 1 Score", text_medium, white) #would be Player_1 + " Score" when put in main program
+        textSurf, textRect = text_objects(p1_name, text_medium, white) #would be Player_1 + " Score" when put in main program
         textRect.center = ((gameDisplay.get_width()/2)/2), ((gameDisplay.get_height()/2)/2) #defines text for player 1 score
         gameDisplay.blit(textSurf, textRect)
 
-        textSurf, textRect = text_objects("Player 2 Score", text_medium, white) #would be Player_2 + " Score" when put in main program
+        textSurf, textRect = text_objects(p2_name, text_medium, white) #would be Player_2 + " Score" when put in main program
         textRect.center = ((gameDisplay.get_width()/2)/2), (gameDisplay.get_height()/1.3333) #defines text for player 2 score
         gameDisplay.blit(textSurf, textRect)
       

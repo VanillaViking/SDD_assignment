@@ -38,4 +38,4 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
             restart() #restart so that any changes come into effect
             quit()
 
-scorescreen.start_loop(DISPLAY)
+scorescreen.start_loop(DISPLAY, player1_name, player2_name)

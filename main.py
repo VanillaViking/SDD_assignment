@@ -6,6 +6,7 @@ import tennis_startscreen
 import options_screen
 import os
 import sys
+import scorescreen
 
 pygame.init()
 
@@ -37,3 +38,4 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
             restart() #restart so that any changes come into effect
             quit()
 
+scorescreen.start_loop(DISPLAY)

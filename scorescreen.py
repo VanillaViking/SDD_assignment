@@ -51,10 +51,12 @@ def options_text(gameDisplay):
 #    #placeholder
 
 def start_loop(gameDisplay):
-    #startx =  (gameDisplay.get_width() * 0.45)
-    #starty = (gameDisplay.get_height() * 0.8)
     Exitgame = False
+    
+    score_list = ["Love", "15", "30", "40", "adv", "win"]
 
+    p1_score = 0 #these values correspond to the indexes in score_list. eg: 0 is "Love" and 3 is 40.
+    p2_score = 0
     #BUTTONS
     p1_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()/4) - 25, 50, 50, "<")
     p1_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()/4) - 25, 50, 50, ">")
@@ -62,7 +64,7 @@ def start_loop(gameDisplay):
     p2_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()* 3/4) - 25, 50, 50, ">")
 
     bg = pygame.transform.scale(pygame.image.load("tennnis.jpg"), (gameDisplay.get_width(),gameDisplay.get_height()))
-
+    deuce = False   #True when score is 40-40
     while not Exitgame:
         #start_message(gameDisplay)
         #mouse = pygame.mouse.get_pos()
@@ -83,8 +85,63 @@ def start_loop(gameDisplay):
         p1_left_btn.draw(gameDisplay)     
         p1_right_btn.draw(gameDisplay)     
         p2_left_btn.draw(gameDisplay)        
-        p2_right_btn.draw(gameDisplay)      
+        p2_right_btn.draw(gameDisplay)
+
+        msg(gameDisplay, score_list[p1_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/4)) 
+        msg(gameDisplay, score_list[p2_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()* 3/4)) 
+         
+        if p1_right_btn.pressed:
+            if p1_score == 3:
+                if p2_score >= 3:
+                    p1_score += 1
+                else:
+                    p1_score += 2        
+            else:
+               p1_score += 1
+            p1_right_btn.pressed = False 
+
+        if p2_right_btn.pressed:
+            if p2_score == 3:
+                if p1_score >= 3:
+                    p2_score += 1
+                else:
+                    p2_score += 2        
+            else:
+               p2_score += 1 
+            p2_right_btn.pressed = False 
+
+        if p1_left_btn.pressed:
+            if p1_score != 0:
+                p1_score -= 1
+            p1_left_btn.pressed = False
+
+        if p2_left_btn.pressed:
+            if p2_score != 0:
+                p2_score -= 1  
+            p2_left_btn.pressed = False
  
+        if p1_score >= 3 and p2_score >= 3 and p1_score == p2_score:
+            msg(gameDisplay,"DEUCE", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
+            deuce = True
+            p1_score = 3
+            p2_score = 3 
+        else:
+            deuce = False
+
+        if p1_score == 3 or p2_score == 3:
+            if not deuce:
+                msg(gameDisplay,"MATCH POINT", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
+
+        if p1_score == 5:
+            pygame.QUIT
+            quit()
+            #p1_winner screen
+
+        if p2_score == 5:
+            pygame.QUIT
+            quit()
+            #p2_winner screen
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.QUIT

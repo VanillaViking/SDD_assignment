@@ -2,12 +2,6 @@ import pygame, time
 pygame.init()
 from button import *
 
-#gameDisplay = 800  ##this is for testing the score screen individually. Comment when adding to main program
-#gameDisplay.get_height() = 600
-#gameDisplay = pygame.display.set_mode((gameDisplay,gameDisplay.get_height()))
-#gameDisplay.get_width() = 1920
-#gameDisplay.get_height() = 1080
-#gameDisplay = pygame.display.set_mode((gameDisplay.get_width(),gameDisplay.get_height()))
 pygame.display.set_caption("TENNIS SCOREKEEPER")
 
 clock = pygame.time.Clock()
@@ -25,30 +19,10 @@ def text_objects(text, font, color):
     textSurface = font.render(text, True, color)
     return textSurface, textSurface.get_rect()
 
-def text_display(gameDisplay, text, size, color): ###Instructions for displaying text. Trying to use Arial gave me an error
-    #text_large = pygame.font.Font('freesansbold.ttf',50)
-    #text_small = pygame.font.Font('freesansbold.ttf',20)
-    TextSurf, TextRect = text_objects(text, size, color)
-    TextRect.center = ((gameDisplay.get_width()/2),(gameDisplay.get_height()/4))
-    gameDisplay.blit(TextSurf, TextRect)
-    pygame.display.update()
-
 def msg(gameDisplay, text, font, colour, pos):
     text_surface = font.render(text, True, colour)
     gameDisplay.blit(text_surface, (pos[0] - (text_surface.get_width()/2), pos[1] - (text_surface.get_height()/2))) #position minus half of text size in order to center it. 
 
-def start_message(gameDisplay):
-    text_display(gameDisplay, "Tennis Scorekeeper", text_large, white)
-def start_button_text(gameDisplay):
-    text_display(gameDisplay, "Start", text_small, white)
-def options_text(gameDisplay):
-    text_display(gameDisplay, "Options", text_small, white)
-#def startcommand(gameDisplay):
-#    pass
-#    #placeholder
-#def optionscommand():
-#    pass
-#    #placeholder
 
 def start_loop(gameDisplay, p1_name, p2_name):
     Exitgame = False
@@ -90,7 +64,7 @@ def start_loop(gameDisplay, p1_name, p2_name):
         msg(gameDisplay, score_list[p1_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/4)) 
         msg(gameDisplay, score_list[p2_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()* 3/4)) 
          
-        if p1_right_btn.pressed:
+        if p1_right_btn.pressed: #player 1 gets a point
             if p1_score == 3:
                 if p2_score >= 3:
                     p1_score += 1
@@ -100,7 +74,7 @@ def start_loop(gameDisplay, p1_name, p2_name):
                p1_score += 1
             p1_right_btn.pressed = False 
 
-        if p2_right_btn.pressed:
+        if p2_right_btn.pressed:    #player 2 gets a point
             if p2_score == 3:
                 if p1_score >= 3:
                     p2_score += 1
@@ -110,17 +84,17 @@ def start_loop(gameDisplay, p1_name, p2_name):
                p2_score += 1 
             p2_right_btn.pressed = False 
 
-        if p1_left_btn.pressed:
+        if p1_left_btn.pressed:     #player 1 loses a point
             if p1_score != 0:
                 p1_score -= 1
             p1_left_btn.pressed = False
 
-        if p2_left_btn.pressed:
+        if p2_left_btn.pressed:     #player 2 loses a point
             if p2_score != 0:
                 p2_score -= 1  
             p2_left_btn.pressed = False
  
-        if p1_score >= 3 and p2_score >= 3 and p1_score == p2_score:
+        if p1_score >= 3 and p2_score >= 3 and p1_score == p2_score: #Checking for deuce
             msg(gameDisplay,"DEUCE", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
             deuce = True
             p1_score = 3
@@ -128,18 +102,16 @@ def start_loop(gameDisplay, p1_name, p2_name):
         else:
             deuce = False
 
-        if p1_score == 3 or p2_score == 3:
+        if p1_score == 3 or p2_score == 3: #Checking for match point
             if not deuce:
                 msg(gameDisplay,"MATCH POINT", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
 
         if p1_score == 5:
-            pygame.QUIT
-            quit()
+            return [score_list[p1_score], score_list[p2_score]]
             #p1_winner screen
 
         if p2_score == 5:
-            pygame.QUIT
-            quit()
+            return [score_list[p1_score], score_list[p2_score]]
             #p2_winner screen
 
         for event in pygame.event.get():

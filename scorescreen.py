@@ -29,6 +29,8 @@ def start_loop(gameDisplay, p1_name, p2_name):
     
     score_list = ["Love", "15", "30", "40", "adv", "win"]
 
+    p1_win = False
+    p2_win = False
     p1_score = 0 #these values correspond to the indexes in score_list. eg: 0 is "Love" and 3 is 40.
     p2_score = 0
     #BUTTONS
@@ -109,10 +111,12 @@ def start_loop(gameDisplay, p1_name, p2_name):
 
         if p1_score == 5:
             return [score_list[p1_score], score_list[p2_score]]
+            p1_win = True
             #p1_winner screen
 
         if p2_score == 5:
             return [score_list[p1_score], score_list[p2_score]]
+            p1_win = True
             #p2_winner screen
 
         for event in pygame.event.get():

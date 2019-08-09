@@ -7,6 +7,7 @@ import options_screen
 import os
 import sys
 import scorescreen
+#import win_screen
 
 pygame.init()
 pygame.mixer.init()
@@ -46,6 +47,9 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
             pygame.QUIT
             restart() #restart so that any changes come into effect
             quit()
+#while True: #displays results after game is won.            
+ #   if scorescreen.start_loop(DISPLAY) == "end_game":
+  #      results = winscreen.win_loop
 
 for n in range(sets):
  

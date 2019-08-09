@@ -9,7 +9,7 @@ import sys
 import scorescreen
 
 pygame.init()
-
+pygame.mixer.init()
 def restart():
     if sys.platform == "win32": #windows 
         os.execl(sys.executable, sys.executable, *sys.argv)
@@ -21,6 +21,15 @@ for line in open("settings.txt"):
     if "resolution" in line:
         line = line.strip().split(",")
         resolution = (int(line[1]),int(line[2]))
+    if "volume" in line:
+        line = line.strip().split(",")
+        volume = float(line[1])
+
+
+#MUSIC
+bg_music = pygame.mixer.music.load("bensound-inspire.mp3")
+pygame.mixer.music.set_volume(volume)
+pygame.mixer.music.play()
 
 DISPLAY = pygame.display.set_mode(resolution)
 
@@ -33,7 +42,7 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
             player1_name, player2_name, sets = details
             break
     else: #go to options screen
-        if options_screen.draw(DISPLAY) == "exit":
+        if options_screen.draw(DISPLAY, volume) == "exit":
             pygame.QUIT
             restart() #restart so that any changes come into effect
             quit()

@@ -14,7 +14,7 @@ def msg(gameDisplay, text, font, colour, pos):
 
 
 
-def draw(DISPLAY):
+def draw(DISPLAY, volume):
     reslist = ["1280x720","1366x768","1920x1080"]
     #background
     bg_image = pygame.transform.scale(pygame.image.load("tennnis.jpg"), (DISPLAY.get_width(),DISPLAY.get_height()))
@@ -43,7 +43,7 @@ def draw(DISPLAY):
 
     #SLIDER
     volume_slider = slider(DISPLAY, (255,255,255), (DISPLAY.get_width()/2 - 125, DISPLAY.get_height()/2 - 10, 200, 20)) 
-    
+    volume_slider.set_value(volume)    
     while not exit_btn.pressed and not cancel_btn.pressed:
         pygame.display.update()
         DISPLAY.blit(bg_image, (0,0))
@@ -96,6 +96,9 @@ def draw(DISPLAY):
     else:
         with open("settings.txt", "w") as f:
             f.write("resolution"+","+reslist[c].split("x")[0]+","+reslist[c].split("x")[1])
+            f.close()
+        with open("settings.txt", "a") as f:
+            f.write("\nvolume,"+str(volume_slider.get_value()))
             f.close()
         return "exit"
     

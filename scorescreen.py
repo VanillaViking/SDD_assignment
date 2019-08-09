@@ -103,8 +103,9 @@ def start_loop(gameDisplay, p1_name, p2_name):
             deuce = False
 
         if p1_score == 3 or p2_score == 3: #Checking for match point
-            if not deuce:
-                msg(gameDisplay,"MATCH POINT", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
+            if p1_score != 4 and p2_score != 4:
+                if not deuce:
+                    msg(gameDisplay,"MATCH POINT", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
 
         if p1_score == 5:
             return [score_list[p1_score], score_list[p2_score]]

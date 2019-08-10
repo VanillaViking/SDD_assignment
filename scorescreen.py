@@ -12,8 +12,8 @@ white = (255,255,255)
 gray = (128,128,128)
 green = (0,255,0)
 
-text_large = pygame.font.Font('freesansbold.ttf',50)
-text_small = pygame.font.Font('freesansbold.ttf',20)
+text_large = pygame.font.SysFont('Arial',50)
+text_small = pygame.font.SysFont('Arial',20)
 text_medium = pygame.font.SysFont('Arial',25)
 
 
@@ -110,7 +110,7 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
             p2_left_btn.pressed = False
  
         if p1_score >= 3 and p2_score >= 3 and p1_score == p2_score: #Checking for deuce
-            msg(gameDisplay,"DEUCE", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
+            msg(gameDisplay,"DEUCE", text_large, (68,252,243), (gameDisplay.get_width()/2, gameDisplay.get_height()* 11/12))
             deuce = True
             p1_score = 3
             p2_score = 3 
@@ -120,7 +120,7 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
         if p1_score == 3 or p2_score == 3: #Checking for match point
             if p1_score != 4 and p2_score != 4:
                 if not deuce:
-                    msg(gameDisplay,"MATCH POINT", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
+                    msg(gameDisplay,"MATCH POINT", text_large, (68,252,243), (gameDisplay.get_width()/2, gameDisplay.get_height() * 11/12))
 
         if p1_score == 5:
             #return [score_list[p1_score], score_list[p2_score]]

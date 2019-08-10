@@ -68,6 +68,7 @@ def draw(DISPLAY, volume):
             right_btn.update(event)
             cancel_btn.update(event)
             volume_slider.update(event, pygame.mouse.get_pos())    
+            pygame.mixer.music.set_volume(volume_slider.get_value())            
  
             if event.type == pygame.QUIT:
                 pygame.QUIT

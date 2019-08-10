@@ -29,12 +29,12 @@ class dashboard():
         self.bg.draw(self.display)
 
         # PLAYER 1 STATS
-        msg(self.display, self.p1_name.upper(), text_small, (200,200,200), (self.display.get_width()/4, self.display.get_height()* 15/18))
+        msg(self.display, self.p1_name.upper(), text_small, (68,252,243), (self.display.get_width()/4, self.display.get_height()* 15/18))
         msg(self.display, "Games won: " + str(self.p1_matches_won), text_small, (200,200,200), (self.display.get_width()/4, self.display.get_height()* 16/18))
         msg(self.display, "Sets won: " + str(self.p1_sets_won), text_small, (200,200,200), (self.display.get_width()/4, self.display.get_height()* 17/18))
         
         # PLAYER 2 STATS
-        msg(self.display, self.p2_name.upper(), text_small, (200,200,200), (self.display.get_width()* 3/4, self.display.get_height()* 15/18))
+        msg(self.display, self.p2_name.upper(), text_small, (68,252,243), (self.display.get_width()* 3/4, self.display.get_height()* 15/18))
         msg(self.display, "Games won: " + str(self.p2_matches_won), text_small, (200,200,200), (self.display.get_width()* 3/4, self.display.get_height()* 16/18))
         msg(self.display, "Sets won: " + str(self.p2_sets_won), text_small, (200,200,200), (self.display.get_width()* 3/4, self.display.get_height()* 17/18))
          

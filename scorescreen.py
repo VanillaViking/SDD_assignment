@@ -53,13 +53,16 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
         pygame.display.update()
         gameDisplay.blit(bg, (0,0)) #Sets background img
        
-        textSurf, textRect = text_objects(p1_name, text_medium, white) #would be Player_1 + " Score" when put in main program
+        '''textSurf, textRect = text_objects(p1_name, text_medium, white) #would be Player_1 + " Score" when put in main program
         textRect.center = ((gameDisplay.get_width()/2)/2), ((gameDisplay.get_height()/2)/2) #defines text for player 1 score
         gameDisplay.blit(textSurf, textRect)
 
         textSurf, textRect = text_objects(p2_name, text_medium, white) #would be Player_2 + " Score" when put in main program
         textRect.center = ((gameDisplay.get_width()/2)/2), (gameDisplay.get_height()/1.3333) #defines text for player 2 score
-        gameDisplay.blit(textSurf, textRect)
+        gameDisplay.blit(textSurf, textRect)'''
+
+        msg(gameDisplay, p1_name.upper(), text_medium, (190,190,190), (gameDisplay.get_width()/2, gameDisplay.get_height()/4 - 50))
+        msg(gameDisplay, p2_name.upper(), text_medium, (190,190,190), (gameDisplay.get_width()/2, gameDisplay.get_height()* 3/4 - 50))
       
 
         #Drawing all the buttons: 

@@ -51,6 +51,28 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
  #   if scorescreen.start_loop(DISPLAY) == "end_game":
   #      results = winscreen.win_loop
 
+def check_lead(p1_matches, p2_matches):
+    if p1_matches - p2_matches >= 2 or p2_matches - p1_matches >= 2:
+        return True
+    else:
+        return False
+
+p1_sets_won = 0
+p2_sets_won = 0
+
+
 for n in range(sets):
- 
-    scorescreen.start_loop(DISPLAY, player1_name, player2_name)
+    p1_matches_won = 0
+    p2_matches_won = 0
+    while p1_matches_won < 6 and p2_matches_won < 6 or not check_lead(p1_matches_won, p2_matches_won):      #loops until one of the players have won over 6 matches AND have a 2 point lead. 
+        if scorescreen.start_loop(DISPLAY, player1_name, player2_name, p1_matches_won, p2_matches_won, p1_sets_won, p2_sets_won) == "p1":
+            p1_matches_won += 1
+        else:
+            p2_matches_won += 1
+    else:
+        if p1_matches_won > p2_matches_won:
+            p1_sets_won += 1
+        else:
+            p2_sets_won += 1
+
+

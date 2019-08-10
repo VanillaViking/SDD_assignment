@@ -1,6 +1,8 @@
 import pygame, time
 pygame.init()
 from button import *
+from dashboard import *
+
 
 pygame.display.set_caption("TENNIS SCOREKEEPER")
 
@@ -24,7 +26,7 @@ def msg(gameDisplay, text, font, colour, pos):
     gameDisplay.blit(text_surface, (pos[0] - (text_surface.get_width()/2), pos[1] - (text_surface.get_height()/2))) #position minus half of text size in order to center it. 
 
 
-def start_loop(gameDisplay, p1_name, p2_name):
+def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets):
     Exitgame = False
     
     score_list = ["Love", "15", "30", "40", "adv", "win"]
@@ -38,6 +40,9 @@ def start_loop(gameDisplay, p1_name, p2_name):
     p1_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()/4) - 25, 50, 50, ">")
     p2_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()* 3/4) - 25, 50, 50, "<")
     p2_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()* 3/4) - 25, 50, 50, ">")
+
+    #DASHBOARD
+    dash = dashboard(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets)
 
     bg = pygame.transform.scale(pygame.image.load("tennnis.jpg"), (gameDisplay.get_width(),gameDisplay.get_height()))
     deuce = False   #True when score is 40-40
@@ -63,8 +68,13 @@ def start_loop(gameDisplay, p1_name, p2_name):
         p2_left_btn.draw(gameDisplay)        
         p2_right_btn.draw(gameDisplay)
 
+        #Draw dashboard
+        dash.draw()
+
         msg(gameDisplay, score_list[p1_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/4)) 
         msg(gameDisplay, score_list[p2_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()* 3/4)) 
+        
+        
          
         if p1_right_btn.pressed: #player 1 gets a point
             if p1_score == 3:
@@ -110,13 +120,15 @@ def start_loop(gameDisplay, p1_name, p2_name):
                     msg(gameDisplay,"MATCH POINT", text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/2))
 
         if p1_score == 5:
-            return [score_list[p1_score], score_list[p2_score]]
+            #return [score_list[p1_score], score_list[p2_score]]
             p1_win = True
+            return "p1"
             #p1_winner screen
 
         if p2_score == 5:
-            return [score_list[p1_score], score_list[p2_score]]
+            #return [score_list[p1_score], score_list[p2_score]]
             p1_win = True
+            return "p2"
             #p2_winner screen
 
         for event in pygame.event.get():

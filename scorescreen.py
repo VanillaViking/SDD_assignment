@@ -38,8 +38,8 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
     #BUTTONS
     p1_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()/4) - 25, 50, 50, "<")
     p1_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()/4) - 25, 50, 50, ">")
-    p2_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()* 3/4) - 25, 50, 50, "<")
-    p2_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()* 3/4) - 25, 50, 50, ">")
+    p2_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, "<")
+    p2_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, ">")
 
     #DASHBOARD
     dash = dashboard(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets)
@@ -62,7 +62,7 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
         gameDisplay.blit(textSurf, textRect)'''
 
         msg(gameDisplay, p1_name.upper(), text_medium, (190,190,190), (gameDisplay.get_width()/2, gameDisplay.get_height()/4 - 50))
-        msg(gameDisplay, p2_name.upper(), text_medium, (190,190,190), (gameDisplay.get_width()/2, gameDisplay.get_height()* 3/4 - 50))
+        msg(gameDisplay, p2_name.upper(), text_medium, (190,190,190), (gameDisplay.get_width()/2, gameDisplay.get_height()* 2/4 - 50))
       
 
         #Drawing all the buttons: 
@@ -75,7 +75,7 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
         dash.draw()
 
         msg(gameDisplay, score_list[p1_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/4)) 
-        msg(gameDisplay, score_list[p2_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()* 3/4)) 
+        msg(gameDisplay, score_list[p2_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()* 2/4)) 
         
         
          

@@ -4,15 +4,13 @@ from text_input import *
 from truefalse import *
 arial = pygame.font.SysFont('Arial', 30)
 
-global N_sets
-global player1_name_text 
-global player2_name_text
 
 #function called whenever screen needs to be drawn
 def draw(DISPLAY):
     #for error msg
     count = 241
-
+    
+    num_sets = None
     cont_button = button((255,255,255,100), (255,255, 255,190), (4*DISPLAY.get_width() /5) - 100, ((4 * DISPLAY.get_height())/6)-(37), 200, 75, "Continue",(0,0,0,255)) #continue
     back_button = button((255,255,255,100), (255,255, 255,190), (1*DISPLAY.get_width() /5) - 100, ((4 * DISPLAY.get_height())/6)-(37), 200, 75, "Back",(0,0,0,255)) #back
     doubles = tf(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5, 10, "", (255,255,255)) #whether game is doubles
@@ -24,8 +22,10 @@ def draw(DISPLAY):
     player1_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 100 - 37, 350, 75,"",(255,255,255))
     player2_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 200-37, 350, 75,"",(255,255,255))
 
-    sets = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 300-37, 100, 75,"",(255,255,255))
-
+    sets = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 300, 100, 75,"",(255,255,255))
+    sets_3 = tf(DISPLAY, DISPLAY.get_width() * 6/10, DISPLAY.get_height()/5 + 300, 10, "3", (255,255,255))
+    sets_5 = tf(DISPLAY, DISPLAY.get_width() * 7/10, DISPLAY.get_height()/5+ 300, 10, "5", (255,255,255))
+    
     #text
     doubles_text = arial.render("Doubles:", True, (255,255,255))
 
@@ -48,7 +48,9 @@ def draw(DISPLAY):
         DISPLAY.blit(doubles_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - doubles_text.get_height()/2))
         player1_name.draw()
         player2_name.draw()
-        sets.draw()
+        #sets.draw()
+        sets_3.draw(False)
+        sets_5.draw(False)
 
         if doubles.active: #display either "player" or "team" depending on if doubles is checked. 
             DISPLAY.blit(team1_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - team1_text.get_height()/2 + 100))
@@ -59,26 +61,33 @@ def draw(DISPLAY):
         
         DISPLAY.blit(sets_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - sets_text.get_height()/2 + 300))
 
+
         for event in pygame.event.get():
             cont_button.update(event)
             back_button.update(event)
             doubles.activate(event)
             player1_name.activate(event)
             player2_name.activate(event)
-            sets.activate(event)
+            #sets.activate(event)
+            sets_3.activate(event)            
+            sets_5.activate(event)            
 
             if event.type == pygame.QUIT:
                 quit()
                 pygame.QUIT
             
             if cont_button.pressed:
+                    if sets_3.active:
+                        num_sets = 3
+                    elif sets_5.active:
+                        num_sets = 5
                     try:
                         #player1_name_text = player1_name.text
                         #player2_name_text = player2_name.text
                         #N_sets = int(sets.text)
 
-                        return [player1_name.text, player2_name.text, int(sets.text)]
-                    except ValueError:
+                        return [player1_name.text, player2_name.text, int(num_sets)]
+                    except TypeError:
                         cont_button.pressed = False
                         count = 0
                         clr_val = 0
@@ -90,4 +99,10 @@ def draw(DISPLAY):
             DISPLAY.blit(SFONT.render("Sets should be a number!", True, (255,0,0)),((DISPLAY.get_width()/2) -(149/2), (DISPLAY.get_height() *2)/3))
 
             count += 1
+        
+
+        if sets_3.clicked:
+            sets_5.active = False
+        if sets_5.clicked:
+            sets_3.active = False
 

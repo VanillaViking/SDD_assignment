@@ -14,9 +14,10 @@ class tf():
         self.col = col
         self.real_col = self.col
         self.change_col = (190,0, 230)
-        self.text = text = FONT.render(text, True, (0,0,0))
+        self.text = text = FONT.render(text, True, (255,255,255))
         self.radius = radius
         self.coloured = False
+        self.clicked = False
 
     def draw(self, anim_check):
         self.display.blit(self.text, (self.x - self.text.get_width()-30, self.y - (self.radius * 2)))
@@ -38,5 +39,8 @@ class tf():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if (int(event.pos[0] - self.x))**2 + (int(event.pos[1] - self.y))**2 <= self.radius**2: # check if mouse is within the area of the button
                 self.active = not self.active
+                self.clicked = True
+            else:
+                self.clicked = False
 
         

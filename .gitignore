@@ -1,4 +1,9 @@
+
+screens/__pycache__/*
+interactables/__pycache__/*
+
 __pycache__/*
+
 
 #settings are unique to user
 settings.txt

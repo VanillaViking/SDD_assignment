@@ -49,9 +49,10 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
             pygame.QUIT
             restart() #restart so that any changes come into effect
             quit()
-#while True: #displays results after game is won.            
- #   if scorescreen.start_loop(DISPLAY) == "end_game":
-  #      results = winscreen.win_loop
+while True: #displays results after game is won.            
+    if scorescreen.start_loop(DISPLAY) == "end_game":
+        results = winscreen.win_loop
+        
 
 def check_lead(p1_matches, p2_matches):
     if p1_matches - p2_matches >= 2 or p2_matches - p1_matches >= 2:

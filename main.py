@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
+import sys
 import pygame
+
+sys.path.append("screens/") #all of the different screens here
+sys.path.append("interactables/") #Classes for buttons, sliders, text input etc here
 import details_screen
 import tennis_startscreen
 import options_screen
 import os
-import sys
 import scorescreen
 #import win_screen
 
@@ -28,7 +31,7 @@ for line in open("settings.txt"):
 
 
 #MUSIC
-bg_music = pygame.mixer.music.load("bensound-inspire.mp3")
+bg_music = pygame.mixer.music.load("audio/bensound-inspire.mp3")
 pygame.mixer.music.set_volume(volume)
 pygame.mixer.music.play()
 
@@ -60,12 +63,14 @@ def check_lead(p1_matches, p2_matches):
 p1_sets_won = 0
 p2_sets_won = 0
 
+score_list = []
 
 for n in range(sets):
+    
     p1_matches_won = 0
     p2_matches_won = 0
     while p1_matches_won < 6 and p2_matches_won < 6 or not check_lead(p1_matches_won, p2_matches_won):      #loops until one of the players have won over 6 matches AND have a 2 point lead. 
-        if scorescreen.start_loop(DISPLAY, player1_name, player2_name, p1_matches_won, p2_matches_won, p1_sets_won, p2_sets_won) == "p1":
+        if scorescreen.start_loop(DISPLAY, player1_name, player2_name, p1_matches_won, p2_matches_won, p1_sets_won, p2_sets_won, sets) == "p1":
             p1_matches_won += 1
         else:
             p2_matches_won += 1
@@ -74,5 +79,6 @@ for n in range(sets):
             p1_sets_won += 1
         else:
             p2_sets_won += 1
+    score_list.append([p1_matches_won, p2_matches_won])
 
-
+print(score_list)

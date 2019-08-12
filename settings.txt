@@ -1,2 +1,2 @@
 resolution,1920,1080
-volume,0.09
+volume,0.08

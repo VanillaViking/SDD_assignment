@@ -3,7 +3,6 @@ pygame.init()
 from button import *
 from dashboard import *
 
-
 pygame.display.set_caption("TENNIS SCOREKEEPER")
 
 clock = pygame.time.Clock()
@@ -26,7 +25,7 @@ def msg(gameDisplay, text, font, colour, pos):
     gameDisplay.blit(text_surface, (pos[0] - (text_surface.get_width()/2), pos[1] - (text_surface.get_height()/2))) #position minus half of text size in order to center it. 
 
 
-def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets):
+def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets, num_sets):
     Exitgame = False
     
     score_list = ["Love", "15", "30", "40", "adv", "win"]
@@ -43,8 +42,9 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
 
     #DASHBOARD
     dash = dashboard(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets)
-
-    bg = pygame.transform.scale(pygame.image.load("tennnis.jpg"), (gameDisplay.get_width(),gameDisplay.get_height()))
+    
+    
+    bg = pygame.transform.scale(pygame.image.load("pictures/tennnis.jpg"), (gameDisplay.get_width(),gameDisplay.get_height()))
     deuce = False   #True when score is 40-40
     while not Exitgame:
         #start_message(gameDisplay)

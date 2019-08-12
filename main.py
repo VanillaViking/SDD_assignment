@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
+import sys
 import pygame
+
+sys.path.append("screens/")
+sys.path.append("interactables/")
 import details_screen
 import tennis_startscreen
 import options_screen
 import os
-import sys
 import scorescreen
 #import win_screen
 
@@ -28,7 +31,7 @@ for line in open("settings.txt"):
 
 
 #MUSIC
-bg_music = pygame.mixer.music.load("bensound-inspire.mp3")
+bg_music = pygame.mixer.music.load("audio/bensound-inspire.mp3")
 pygame.mixer.music.set_volume(volume)
 pygame.mixer.music.play()
 

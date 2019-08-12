@@ -17,7 +17,7 @@ def msg(gameDisplay, text, font, colour, pos):
 def draw(DISPLAY, volume):
     reslist = ["1280x720","1366x768","1920x1080"]
     #background
-    bg_image = pygame.transform.scale(pygame.image.load("tennnis.jpg"), (DISPLAY.get_width(),DISPLAY.get_height()))
+    bg_image = pygame.transform.scale(pygame.image.load("pictures/tennnis.jpg"), (DISPLAY.get_width(),DISPLAY.get_height()))
 
 
     #text surfaces.

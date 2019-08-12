@@ -44,7 +44,7 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
     dash = dashboard(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets)
     
     
-    bg = pygame.transform.scale(pygame.image.load("tennnis.jpg"), (gameDisplay.get_width(),gameDisplay.get_height()))
+    bg = pygame.transform.scale(pygame.image.load("pictures/tennnis.jpg"), (gameDisplay.get_width(),gameDisplay.get_height()))
     deuce = False   #True when score is 40-40
     while not Exitgame:
         #start_message(gameDisplay)

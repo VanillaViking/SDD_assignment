@@ -22,4 +22,8 @@ def msg(gameDisplay, text, font, colour, pos):
 
 
 def win_loop:
+    if p1_win = True:
+        #msg.
+    if p2_win = True:
+        #
     

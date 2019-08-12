@@ -8,7 +8,7 @@ Software Design Program
 
 `git clone https://github.com/VanillaViking/SDD_assignment.git`
 
-`cd ~/SDD_assignment`
+`cd SDD_assignment`
 
 `python3 main.py`
 

@@ -3,8 +3,8 @@
 import sys
 import pygame
 
-sys.path.append("screens/")
-sys.path.append("interactables/")
+sys.path.append("screens/") #all of the different screens here
+sys.path.append("interactables/") #Classes for buttons, sliders, text input etc here
 import details_screen
 import tennis_startscreen
 import options_screen

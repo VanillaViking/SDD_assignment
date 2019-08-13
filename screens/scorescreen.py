@@ -32,19 +32,21 @@ def draw_score_hist(gameDisplay, p1_name, p2_name, sets):
     x_increment = 0
     if sets == 3:
         p1_x_val = gameDisplay.get_width()/2 - ((p1.get_width() + 85)/2)
-        p1_y_val = gameDisplay.get_height()* 3/4 - p1.get_height()
+        p1_y_val = gameDisplay.get_height()* 3/4 - 21
         
         p2_x_val = gameDisplay.get_width()/2 - (p2.get_width() + 85)/2 
-        p2_y_val = gameDisplay.get_height()* 3/4 + p2.get_height()
+        p2_y_val = gameDisplay.get_height()* 3/4 + 2 
 
         gameDisplay.blit(p1, ((p1_x_val), p1_y_val))
         gameDisplay.blit(p2, (p2_x_val,p2_y_val))
-        
+                
         if len(p1_name) >= len(p2_name):
             pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 2, p1_y_val), (p1_x_val + p1.get_width() + 2, p2_y_val + p2.get_height()), 2)
             pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 29, p1_y_val), (p1_x_val + p1.get_width() + 29, p2_y_val + p2.get_height()), 2)
             pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 56, p1_y_val), (p1_x_val + p1.get_width() + 56, p2_y_val + p2.get_height()), 2)
             pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 83, p1_y_val), (p1_x_val + p1.get_width() + 83, p2_y_val + p2.get_height()), 2)
+            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val, gameDisplay.get_height() * 3/4), (p1_x_val +p1.get_width() + 83, gameDisplay.get_height() * 3/4), 2)
+
 
 def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets, num_sets):
     Exitgame = False

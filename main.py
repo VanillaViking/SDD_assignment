@@ -9,7 +9,7 @@ import tennis_startscreen
 import options_screen
 import os
 import scorescreen
-#import win_screen
+import win_screen
 
 pygame.init()
 pygame.mixer.init()
@@ -78,12 +78,11 @@ for n in range(sets): #calculates the score
             p2_sets_won += 1
     score_list.append([p1_matches_won, p2_matches_won]) #adds the score to the total
     
-while True: #displays results after game is won.            
-    if scorescreen.start_loop(DISPLAY) == "end_game":
-        if p1_sets_won > sets: #checks who the winner is
-            results = winscreen.win_loop(p1)
-        elif p2_sets_won > sets:
-            results = winscreen.win_loop(p2)
-            
+#if scorescreen.start_loop(DISPLAY) == "end_game":
 
-print(score_list)
+if p1_sets_won > p2_sets_won: #checks who the winner is
+    win_screen.win_loop(DISPLAY, "p1", player1_name, player2_name, sets, score_list)
+elif p2_sets_won > p1_sets_won:
+    win_screen.win_loop(DISPLAY, "p2", player1_name, player2_name, sets, score_list)
+    
+

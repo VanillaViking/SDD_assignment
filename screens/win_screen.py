@@ -30,3 +30,9 @@ def win_loop: #displays winning text
         textSurf, textRect = text_objects(player2_name + " wins", text_large, white)
         textRect.center = (DISPLAY.get_width()/2), ((DISPLAY.get_height()/2)-15)
         gameDisplay.blit(textSurf, textRect)
+
+    for event in pygame.event.get(): #i don't know if this is needed here or not but i'm putting this here just in case
+        if event.type == pygame.QUIT:
+            pygame.QUIT
+            quit()
+            Exitgame = True

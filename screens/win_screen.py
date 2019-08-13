@@ -21,12 +21,12 @@ def msg(gameDisplay, text, font, colour, pos):
     gameDisplay.blit(text_surface, (pos[0] - (text_surface.get_width()/2), pos[1] - (text_surface.get_height()/2))) #position minus half of text size in order to center it. 
 
 
-def win_loop: #displays winning text
-    if p1_win = True:
+def win_loop(winning_player): #displays winning text
+    if winning_player == p1:
         textSurf, textRect = text_objects(player1_name + " wins", text_large, white)
         textRect.center = (DISPLAY.get_width()/2), ((DISPLAY.get_height()/2)-15)
         gameDisplay.blit(textSurf, textRect)
-    if p2_win = True:
+    else:
         textSurf, textRect = text_objects(player2_name + " wins", text_large, white)
         textRect.center = (DISPLAY.get_width()/2), ((DISPLAY.get_height()/2)-15)
         gameDisplay.blit(textSurf, textRect)

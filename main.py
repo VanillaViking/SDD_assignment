@@ -13,7 +13,7 @@ import scorescreen
 
 pygame.init()
 pygame.mixer.init()
-def restart():
+def restart(): #restarts the entire program
     if sys.platform == "win32": #windows 
         os.execl(sys.executable, sys.executable, *sys.argv)
     else: #linux & macOS

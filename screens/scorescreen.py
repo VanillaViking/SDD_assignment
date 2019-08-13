@@ -15,7 +15,7 @@ text_large = pygame.font.SysFont('Arial',50)
 text_small = pygame.font.SysFont('Arial',20)
 text_medium = pygame.font.SysFont('Arial',25)
 
-
+        
 def text_objects(text, font, color):
     textSurface = font.render(text, True, color)
     return textSurface, textSurface.get_rect()
@@ -24,6 +24,27 @@ def msg(gameDisplay, text, font, colour, pos):
     text_surface = font.render(text, True, colour)
     gameDisplay.blit(text_surface, (pos[0] - (text_surface.get_width()/2), pos[1] - (text_surface.get_height()/2))) #position minus half of text size in order to center it. 
 
+
+def draw_score_hist(gameDisplay, p1_name, p2_name, sets):
+    p1 = text_small.render(p1_name, True, (255,255,255))
+    p2 = text_small.render(p2_name, True, (255,255,255))
+
+    x_increment = 0
+    if sets == 3:
+        p1_x_val = gameDisplay.get_width()/2 - ((p1.get_width() + 85)/2)
+        p1_y_val = gameDisplay.get_height()* 3/4 - p1.get_height()
+        
+        p2_x_val = gameDisplay.get_width()/2 - (p2.get_width() + 85)/2 
+        p2_y_val = gameDisplay.get_height()* 3/4 + p2.get_height()
+
+        gameDisplay.blit(p1, ((p1_x_val), p1_y_val))
+        gameDisplay.blit(p2, (p2_x_val,p2_y_val))
+        
+        if len(p1_name) >= len(p2_name):
+            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 2, p1_y_val), (p1_x_val + p1.get_width() + 2, p2_y_val + p2.get_height()), 2)
+            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 29, p1_y_val), (p1_x_val + p1.get_width() + 29, p2_y_val + p2.get_height()), 2)
+            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 56, p1_y_val), (p1_x_val + p1.get_width() + 56, p2_y_val + p2.get_height()), 2)
+            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 83, p1_y_val), (p1_x_val + p1.get_width() + 83, p2_y_val + p2.get_height()), 2)
 
 def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets, num_sets):
     Exitgame = False
@@ -73,6 +94,9 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
 
         #Draw dashboard
         dash.draw()
+
+        #Draw score history
+        draw_score_hist(gameDisplay, p1_name, p2_name, num_sets)
 
         msg(gameDisplay, score_list[p1_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()/4)) 
         msg(gameDisplay, score_list[p2_score], text_medium, (255,255,255), (gameDisplay.get_width()/2, gameDisplay.get_height()* 2/4)) 

@@ -24,9 +24,9 @@ def msg(gameDisplay, text, font, colour, pos):
 def win_loop: #displays winning text
     if p1_win = True:
         textSurf, textRect = text_objects(player1_name + " wins", text_large, white)
-        textRect.center = (DISPLAY.get_width()/2), (DISPLAY.get_height()/2)
+        textRect.center = (DISPLAY.get_width()/2), ((DISPLAY.get_height()/2)-15)
         gameDisplay.blit(textSurf, textRect)
     if p2_win = True:
         textSurf, textRect = text_objects(player2_name + " wins", text_large, white)
-        textRect.center = (DISPLAY.get_width()/2), (DISPLAY.get_height()/2)
+        textRect.center = (DISPLAY.get_width()/2), ((DISPLAY.get_height()/2)-15)
         gameDisplay.blit(textSurf, textRect)

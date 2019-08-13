@@ -25,11 +25,11 @@ def msg(gameDisplay, text, font, colour, pos):
     gameDisplay.blit(text_surface, (pos[0] - (text_surface.get_width()/2), pos[1] - (text_surface.get_height()/2))) #position minus half of text size in order to center it. 
 
 
-def draw_score_hist(gameDisplay, p1_name, p2_name, sets):
+def draw_score_hist(gameDisplay, p1_name, p2_name, sets): #Draws a history of the games won by each player
     p1 = text_small.render(p1_name, True, (255,255,255))
     p2 = text_small.render(p2_name, True, (255,255,255))
 
-    x_increment = 0
+    x_increment = 2
     if sets == 3:
         p1_x_val = gameDisplay.get_width()/2 - ((p1.get_width() + 85)/2)
         p1_y_val = gameDisplay.get_height()* 3/4 - 21
@@ -41,14 +41,18 @@ def draw_score_hist(gameDisplay, p1_name, p2_name, sets):
         gameDisplay.blit(p2, (p2_x_val,p2_y_val))
                 
         if len(p1_name) >= len(p2_name):
-            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 2, p1_y_val), (p1_x_val + p1.get_width() + 2, p2_y_val + p2.get_height()), 2)
-            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 29, p1_y_val), (p1_x_val + p1.get_width() + 29, p2_y_val + p2.get_height()), 2)
-            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 56, p1_y_val), (p1_x_val + p1.get_width() + 56, p2_y_val + p2.get_height()), 2)
-            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 83, p1_y_val), (p1_x_val + p1.get_width() + 83, p2_y_val + p2.get_height()), 2)
-            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val, gameDisplay.get_height() * 3/4), (p1_x_val +p1.get_width() + 83, gameDisplay.get_height() * 3/4), 2)
+            #horrible code, need to fix later with for loop.
+            for n in range(sets+1):
+                pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + x_increment, p1_y_val), (p1_x_val + p1.get_width() + x_increment, p2_y_val + p2.get_height()), 2)
+                #pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 29, p1_y_val), (p1_x_val + p1.get_width() + 29, p2_y_val + p2.get_height()), 2)
+                #pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 56, p1_y_val), (p1_x_val + p1.get_width() + 56, p2_y_val + p2.get_height()), 2)
+                #pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + 83, p1_y_val), (p1_x_val + p1.get_width() + 83, p2_y_val + p2.get_height()), 2)
+                x_increment += 27
+
+            pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val, gameDisplay.get_height() * 3/4), (p1_x_val +p1.get_width() + 83, gameDisplay.get_height() * 3/4), 2) #horizontal line
 
 
-def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets, num_sets):
+def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets, num_sets, score_list):
     Exitgame = False
     
     score_list = ["Love", "15", "30", "40", "adv", "win"]
@@ -58,6 +62,7 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
     p1_score = 0 #these values correspond to the indexes in score_list. eg: 0 is "Love" and 3 is 40.
     p2_score = 0
     #BUTTONS
+    
     p1_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()/4) - 25, 50, 50, "<")
     p1_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()/4) - 25, 50, 50, ">")
     p2_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, "<")
@@ -76,14 +81,6 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
         pygame.display.update()
         gameDisplay.blit(bg, (0,0)) #Sets background img
        
-        '''textSurf, textRect = text_objects(p1_name, text_medium, white) #would be Player_1 + " Score" when put in main program
-        textRect.center = ((gameDisplay.get_width()/2)/2), ((gameDisplay.get_height()/2)/2) #defines text for player 1 score
-        gameDisplay.blit(textSurf, textRect)
-
-        textSurf, textRect = text_objects(p2_name, text_medium, white) #would be Player_2 + " Score" when put in main program
-        textRect.center = ((gameDisplay.get_width()/2)/2), (gameDisplay.get_height()/1.3333) #defines text for player 2 score
-        gameDisplay.blit(textSurf, textRect)'''
-
         msg(gameDisplay, p1_name.upper(), text_medium, (190,190,190), (gameDisplay.get_width()/2, gameDisplay.get_height()/4 - 50))
         msg(gameDisplay, p2_name.upper(), text_medium, (190,190,190), (gameDisplay.get_width()/2, gameDisplay.get_height()* 2/4 - 50))
       

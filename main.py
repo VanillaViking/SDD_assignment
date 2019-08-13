@@ -67,7 +67,7 @@ for n in range(sets): #calculates the score
     p1_matches_won = 0
     p2_matches_won = 0
     while p1_matches_won < 6 and p2_matches_won < 6 or not check_lead(p1_matches_won, p2_matches_won):      #loops until one of the players have won over 6 matches AND have a 2 point lead. 
-        if scorescreen.start_loop(DISPLAY, player1_name, player2_name, p1_matches_won, p2_matches_won, p1_sets_won, p2_sets_won, sets) == "p1":
+        if scorescreen.start_loop(DISPLAY, player1_name, player2_name, p1_matches_won, p2_matches_won, p1_sets_won, p2_sets_won, sets, score_list) == "p1":
             p1_matches_won += 1
         else:
             p2_matches_won += 1

@@ -49,9 +49,7 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
             pygame.QUIT
             restart() #restart so that any changes come into effect
             quit()
-#while True: #displays results after game is won.            
- #   if scorescreen.start_loop(DISPLAY) == "end_game":
-  #      results = winscreen.win_loop
+        
 
 def check_lead(p1_matches, p2_matches):
     if p1_matches - p2_matches >= 2 or p2_matches - p1_matches >= 2:
@@ -64,7 +62,7 @@ p2_sets_won = 0
 
 score_list = []
 
-for n in range(sets):
+for n in range(sets): #calculates the score
     
     p1_matches_won = 0
     p2_matches_won = 0
@@ -78,6 +76,14 @@ for n in range(sets):
             p1_sets_won += 1
         else:
             p2_sets_won += 1
-    score_list.append([p1_matches_won, p2_matches_won])
+    score_list.append([p1_matches_won, p2_matches_won]) #adds the score to the total
+    
+while True: #displays results after game is won.            
+    if scorescreen.start_loop(DISPLAY) == "end_game":
+        if p1_sets_won > sets: #checks who the winner is
+            results = winscreen.win_loop(p1)
+        elif p2_sets_won > sets:
+            results = winscreen.win_loop(p2)
+            
 
 print(score_list)

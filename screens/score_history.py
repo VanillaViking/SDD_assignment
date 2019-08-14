@@ -29,13 +29,13 @@ def draw_score_hist(gameDisplay, p1_name, p2_name, sets, score_list): #Draws a h
         for n in range(sets+1):
             x_increment += 27
             pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val + p1.get_width() + x_increment, p1_y_val), (p1_x_val + p1.get_width() + x_increment, p2_y_val + p2.get_height()), 2)
-            if n <= len(score_list) - 1:
+            if n <= len(score_list) - 1: #displays the scores in the array 
                 msg(gameDisplay, str(score_list[n][0]), text_small, (255,255,255), (p1_x_val + p1.get_width() + x_increment + 13, p1_y_val + 10))
                 msg(gameDisplay, str(score_list[n][1]), text_small, (255,255,255), (p1_x_val + p1.get_width() + x_increment + 13, p2_y_val + 12))
 
         pygame.draw.line(gameDisplay, (190,190,190), (p1_x_val, gameDisplay.get_height() * 3/4), (p1_x_val +p1.get_width() + x_increment, gameDisplay.get_height() * 3/4), 2) #horizontal line
 
-    else:
+    else: #when p2 is larger, meaning that enough space is accomodated for p2's name to fit in the column
         for n in range(sets+1):
             x_increment += 27
             pygame.draw.line(gameDisplay, (190,190,190), (p2_x_val + p2.get_width() + x_increment, p1_y_val), (p2_x_val + p2.get_width() + x_increment, p2_y_val + p2.get_height()), 2)

@@ -48,7 +48,6 @@ def draw(DISPLAY):
         DISPLAY.blit(doubles_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - doubles_text.get_height()/2))
         player1_name.draw()
         player2_name.draw()
-        #sets.draw()
         sets_3.draw(False)
         sets_5.draw(False)
 
@@ -63,12 +62,12 @@ def draw(DISPLAY):
 
 
         for event in pygame.event.get():
+            #Activating or updating the objects 
             cont_button.update(event)
             back_button.update(event)
             doubles.activate(event)
             player1_name.activate(event)
             player2_name.activate(event)
-            #sets.activate(event)
             sets_3.activate(event)            
             sets_5.activate(event)            
 
@@ -82,10 +81,6 @@ def draw(DISPLAY):
                     elif sets_5.active:
                         num_sets = 5
                     try:
-                        #player1_name_text = player1_name.text
-                        #player2_name_text = player2_name.text
-                        #N_sets = int(sets.text)
-
                         return [player1_name.text, player2_name.text, int(num_sets)]
                     except TypeError:
                         cont_button.pressed = False

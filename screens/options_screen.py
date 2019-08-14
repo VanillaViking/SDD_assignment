@@ -63,6 +63,7 @@ def draw(DISPLAY, volume):
         msg(DISPLAY, str(int(volume_slider.get_value() * 100)) + "%", medium_font, (255,255,255), (DISPLAY.get_width()/2 + 125, DISPLAY.get_height()/2))
 
         for event in pygame.event.get():
+            #Updating all objects
             exit_btn.update(event)
             left_btn.update(event)
             right_btn.update(event)
@@ -94,7 +95,7 @@ def draw(DISPLAY, volume):
 
     if cancel_btn.pressed:
         return "cancel"
-    else:
+    else: #Writes to a txt file so that the changes are not lost after each restart.
         with open("settings.txt", "w") as f:
             f.write("resolution"+","+reslist[c].split("x")[0]+","+reslist[c].split("x")[1])
             f.close()

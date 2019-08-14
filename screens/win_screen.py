@@ -29,7 +29,7 @@ def win_loop(DISPLAY, winning_player, player1_name, player2_name, num_sets, scor
     while not exit_btn.pressed:
         pygame.display.update()
         DISPLAY.blit(bg, (0,0))
-        if winning_player == "p1":
+        if winning_player == "p1": #checking which player won
             textSurf, textRect = text_objects(player1_name + " wins!", text_large, white)
             textRect.center = (DISPLAY.get_width()/2), ((DISPLAY.get_height()/2)-15)
             DISPLAY.blit(textSurf, textRect)
@@ -38,7 +38,7 @@ def win_loop(DISPLAY, winning_player, player1_name, player2_name, num_sets, scor
             textRect.center = (DISPLAY.get_width()/2), ((DISPLAY.get_height()/2)-15)
             DISPLAY.blit(textSurf, textRect)
 
-        draw_score_hist(DISPLAY, player1_name, player2_name, num_sets, score_list)        
+        draw_score_hist(DISPLAY, player1_name, player2_name, num_sets, score_list)        # Draws the history of the points in each set
         exit_btn.draw(DISPLAY)
         for event in pygame.event.get(): #i don't know if this is needed here or not but i'm putting this here just in case
             if event.type == pygame.QUIT:

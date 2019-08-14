@@ -21,8 +21,6 @@ def text_objects(text, font, color):
     return textSurface, textSurface.get_rect()
 
 def text_display(gameDisplay, text, size, color): ###Instructions for displaying text. Trying to use Arial gave me an error
-    #text_large = pygame.font.Font('freesansbold.ttf',50)
-    #text_small = pygame.font.Font('freesansbold.ttf',20)
     TextSurf, TextRect = text_objects(text, size, color)
     TextRect.center = ((gameDisplay.get_width()/2),(gameDisplay.get_height()/4))
     gameDisplay.blit(TextSurf, TextRect)
@@ -80,10 +78,6 @@ def start_loop(gameDisplay):
         textSurf, textRect = text_objects("Options", text_small, white)
         textRect.center = (options_button_width+(100/2)), (options_button_height+(50/2))
         gameDisplay.blit(textSurf, textRect) #Defines text for options button
-        #smallText = pygame.font.Font("freesansbold.ttf",20)
-        #starttextSurf, starttextRect = text_objects("Start", smallText)
-        #textRect.center = ( (150+(100/2)), (450+(50/2)) )
-        #gameDisplay.blit(textSurf, textRect)
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

@@ -31,7 +31,7 @@ def msg(gameDisplay, text, font, colour, pos):
 def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets, num_sets, point_list):
     Exitgame = False
     
-    score_list = ["Love", "15", "30", "40", "adv", "win"]
+    score_list = ["Love", "15", "30", "40", "ADV", "win"]
 
     p1_win = False
     p2_win = False

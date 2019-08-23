@@ -21,12 +21,16 @@ class button():
     if self.wrapping:
       self.text = []
       wrapped = textwrap.wrap(text, self.wrapping)
+      for c,n in enumerate(wrapped):
+        n = n.split("  ")
+        wrapped[c] = n[0]
+        if len(n) > 1:
+            wrapped.insert(c+1, "")
+            wrapped.insert(c+2, n[1])
       for n in wrapped:
           self.text.append(arial.render(n, True, text_col))
     else:
         self.text = [arial.render(text, True, text_col)]
-
-
   def draw(self, DISPLAY):
     btn = pygame.Surface((self.rect.width,self.rect.height), pygame.SRCALPHA)
     btn.fill(self.colour)
@@ -42,7 +46,7 @@ class button():
     #printing the text in
     for line in self.text:
       DISPLAY.blit(line, (self.rect.center[0] - (line.get_width()/2), ypos))
-      ypos += 20
+      ypos += 30
   
 
   def isOver(self, mouse_pos):

@@ -1,0 +1,34 @@
+USER GUIDE
+
+Welcome to Tennis Scorekeeper, the most intuitive scorekeeper in the world.
+
+MENU & OPTIONS
+
+When you start the program, you will be on the menu. Here, you have two options.
+Click 'Start' to begin the game. This will take you to the game setup screen.
+Feel like the game's too loud or the quality's too low?
+Click 'Options' to go to the options screen. Here you can change the resolution of the program with the arrows, or adjust the volume by clicking on the volume bar. To mute the program, set the bar to '0'.
+While on the options screen, click 'Back' to go back to the menu.
+
+GAME SETUP
+
+The game setup screen is where you decide how many sets are going to be played, whether it's a singles or doubles game, and what the names of the players are.
+To setup a doubles game, click the 'Doubles' radio button.
+The next two boxes allows you to enter the players' names. If it's a doubles game, the names entered will be team names.
+Finally, click on either radio button below the boxes to choose between playing a 3 set game or a 5 set game.
+Click 'Continue' to begin scoring the game with the predefined settings.
+
+THE GAME
+
+Once you click continue, you will be taken to the game screen, which allows you to keep track of the score of the game.
+Under each player/team's name, there are two arrows and the player/team's score in the current round between the arrows, ranging from love (0) to 40. To record that a player has scored, click the right arrow under that player's name. If you made a mistake or a point has been counted as invalid, click the left arrow to undo.
+The table underneath the names and arrows displays the total set score for both sides, starting after a player wins a set.
+The blue bar at the bottom of the screen shows how many sets each player has won and their score within the current set.
+Once a player has won all the sets, the winner and the final score will be displayed. Here, click 'Exit' to exit the game.
+
+Press the red 'x' at the top right corner to exit the game at any time.
+
+INFO ABOUT TENNIS
+
+Tennis, a popular racket sport first played in England in the late 19th century, is the focus of this program. The goal of tennis is to hit the ball over the net into the other players court. When the other player cannot return the ball, a point is won. The game is played with two or four people. When it is played with two people, it is called singles, and when it is played with four people, it is called doubles. The court has "alleys" on each side, which are "fair" territory when playing doubles. A tennis game has a number of sets. Each set has a number of games, and each game has points. The points are counted love (0, after the French l'oeuf), fifteen (15), thirty (30), and forty (40). If both players get to forty, the score is a deuce from which 2 more points are needed to win the game. When one player reaches six games, it is one set. If it is a three-set match, the player who wins two sets first is the winner. If the game count reaches 55, the set must be won with two more games than the other player, like 75 or 86. If the game count gets to 66, a "tiebreaker" is played. In a tiebreak, players have to get at least seven points while getting two more points than the other player to win the set.
+

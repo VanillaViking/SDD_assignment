@@ -10,7 +10,9 @@ import options_screen
 import os
 import scorescreen
 import win_screen
+import help_screen
 
+resolution = None
 pygame.init()
 pygame.mixer.init()
 def restart(): #restarts the entire program
@@ -23,35 +25,45 @@ def restart(): #restarts the entire program
 for line in open("settings.txt"):
     if "resolution" in line:
         line = line.strip().split(",")
-        resolution = (int(line[1]),int(line[2]))
+        try:
+            resolution = (int(line[1]),int(line[2]))
+        except:
+            DISPLAY = pygame.display.set_mode((0,0), pygame.FULLSCREEN) 
+
     if "volume" in line:
         line = line.strip().split(",")
         volume = float(line[1])
+
 
 
 #MUSIC
 bg_music = pygame.mixer.music.load("audio/bensound-inspire.mp3")
 pygame.mixer.music.set_volume(volume)
 pygame.mixer.music.play()
-
-DISPLAY = pygame.display.set_mode(resolution)
+if resolution:
+    DISPLAY = pygame.display.set_mode(resolution)
 
 #----------------------------------------------------
 
+#help_screen.draw(DISPLAY)
+
 while True: #loops until player hits "start" in first screen or "save and exit" in options screen.
-    if tennis_startscreen.start_loop(DISPLAY) == "start": #go to details screen
+    start_screen_command = tennis_startscreen.start_loop(DISPLAY) 
+    if start_screen_command == "start": #go to details screen
         details = details_screen.draw(DISPLAY)
         if details != "back":
             player1_name, player2_name, sets = details
             break
-    else: #go to options screen
+    elif start_screen_command == "opts": #go to options screen
         if options_screen.draw(DISPLAY, volume) == "exit":
             pygame.QUIT
             restart() #restart so that any changes come into effect
             quit()
+    elif start_screen_command == "help": #bring up user manual
+        help_screen.draw(DISPLAY)
         
 
-def check_lead(p1_matches, p2_matches):
+def check_lead(p1_matches, p2_matches): #checking if a player is leading by to in order to win the set
     if p1_matches - p2_matches >= 2 or p2_matches - p1_matches >= 2:
         return True
     else:

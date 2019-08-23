@@ -15,7 +15,7 @@ def msg(gameDisplay, text, font, colour, pos):
 
 
 def draw(DISPLAY, volume):
-    reslist = ["1280x720","1366x768","1920x1080"]
+    reslist = ["1280x720","1366x768","Fullscreen"]
     #background
     bg_image = pygame.transform.scale(pygame.image.load("pictures/tennnis.jpg"), (DISPLAY.get_width(),DISPLAY.get_height()))
 
@@ -31,6 +31,8 @@ def draw(DISPLAY, volume):
         if (str(DISPLAY.get_width()) +"x"+str(DISPLAY.get_height())) == n:
             res_numbers = reslist[c]
             break   
+        else:
+            res_numbers = reslist[-1]
 
     settings_res_numbers = small_font.render(res_numbers, True, (255,255,255) )
 
@@ -97,8 +99,12 @@ def draw(DISPLAY, volume):
         return "cancel"
     else: #Writes to a txt file so that the changes are not lost after each restart.
         with open("settings.txt", "w") as f:
-            f.write("resolution"+","+reslist[c].split("x")[0]+","+reslist[c].split("x")[1])
-            f.close()
+            try:
+                f.write("resolution"+","+reslist[c].split("x")[0]+","+reslist[c].split("x")[1])
+                f.close()
+            except:
+                f.write("resolution,fullscreen")
+                f.close()
         with open("settings.txt", "a") as f:
             f.write("\nvolume,"+str(volume_slider.get_value()))
             f.close()

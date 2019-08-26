@@ -45,7 +45,7 @@ if resolution:
 
 #----------------------------------------------------
 
-#help_screen.draw(DISPLAY)
+help_screen.draw(DISPLAY)
 
 while True: #loops until player hits "start" in first screen or "save and exit" in options screen.
     start_screen_command = tennis_startscreen.start_loop(DISPLAY) 

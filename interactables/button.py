@@ -15,19 +15,19 @@ class button():
     self.plain_text = text
     self.pressed = False
     self.wrapping = wrapping
-
+    self.wrapped = [] 
 
     #text wrapping inside the button
     if self.wrapping:
       self.text = []
-      wrapped = textwrap.wrap(text, self.wrapping)
-      for c,n in enumerate(wrapped):
-        n = n.split("  ")
-        wrapped[c] = n[0]
-        if len(n) > 1:
-            wrapped.insert(c+1, "")
-            wrapped.insert(c+2, n[1])
-      for n in wrapped:
+      self.wrapped = textwrap.wrap(text, self.wrapping)
+      sliced = []
+      for line in self.wrapped:
+        line = line.split("%")
+        for n in line:
+            sliced.append(n)
+
+      for n in sliced:
           self.text.append(arial.render(n, True, text_col))
     else:
         self.text = [arial.render(text, True, text_col)]

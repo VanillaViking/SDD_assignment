@@ -77,7 +77,7 @@ def start_loop(gameDisplay):
                 return "userguide"
         ###Creates the user guide button
         else:
-            pygame.draw.rect(gameDisplay, black,((gameDisplay.get_width() - 50)/2,((gameDisplay.get_height() - 100)/2)+100,100,50))    
+            pygame.draw.rect(gameDisplay, black,((gameDisplay.get_width() - 50)/2,((gameDisplay.get_height() - 100)/2)+200,100,50))    
         textSurf, textRect = text_objects("Start", text_small, white)
         textRect.center = (button_width+(100/2)), (button_height+(50/2))
         gameDisplay.blit(textSurf, textRect) #Defines text for start button

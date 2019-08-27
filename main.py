@@ -45,7 +45,7 @@ if resolution:
 
 #----------------------------------------------------
 
-help_screen.draw(DISPLAY)
+#help_screen.draw(DISPLAY)
 
 while True: #loops until player hits "start" in first screen or "save and exit" in options screen.
     start_screen_command = tennis_startscreen.start_loop(DISPLAY) 
@@ -59,7 +59,7 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
             pygame.QUIT
             restart() #restart so that any changes come into effect
             quit()
-    elif start_screen_command == "help": #bring up user manual
+    elif start_screen_command == "userguide": #bring up user manual
         help_screen.draw(DISPLAY)
         
 

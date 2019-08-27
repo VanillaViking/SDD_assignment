@@ -74,7 +74,6 @@ def start_loop(gameDisplay):
         if guide_button_width+100 > mouse[0] > guide_button_width and guide_button_height+50 > mouse[1] > guide_button_height:
             pygame.draw.rect(gameDisplay, gray,((gameDisplay.get_width() - 50)/2,((gameDisplay.get_height() - 100)/2)+200,100,50))
             if click[0] == 1:
-                userguidecommand() ###Defines what happen when the button is pressed
                 return "userguide"
         ###Creates the user guide button
         else:

@@ -48,6 +48,9 @@ def start_loop(gameDisplay):
     button_height = (gameDisplay.get_height() - 100)/2
     options_button_width = (gameDisplay.get_width() - 50)/2
     options_button_height = ((gameDisplay.get_height() - 100)/2+100)
+    guide_button_width = (gameDisplay.get_width() - 50)/2
+    guide_button_height = ((gameDisplay.get_height() - 100)/2+200)
+    
     while not Exitgame:
         start_message(gameDisplay)
         mouse = pygame.mouse.get_pos()
@@ -68,6 +71,12 @@ def start_loop(gameDisplay):
                 optionscommand() ###Defines what happen when the button is pressed
                 return "opts"
         ###Creates the options button
+        if guide_button_width+100 > mouse[0] > guide_button_width and guide_button_height+50 > mouse[1] > guide_button_height:
+            pygame.draw.rect(gameDisplay, gray,((gameDisplay.get_width() - 50)/2,((gameDisplay.get_height() - 100)/2)+200,100,50))
+            if click[0] == 1:
+                userguidecommand() ###Defines what happen when the button is pressed
+                return "userguide"
+        ###Creates the user guide button
         else:
             pygame.draw.rect(gameDisplay, black,((gameDisplay.get_width() - 50)/2,((gameDisplay.get_height() - 100)/2)+100,100,50))    
         textSurf, textRect = text_objects("Start", text_small, white)
@@ -78,6 +87,9 @@ def start_loop(gameDisplay):
         textSurf, textRect = text_objects("Options", text_small, white)
         textRect.center = (options_button_width+(100/2)), (options_button_height+(50/2))
         gameDisplay.blit(textSurf, textRect) #Defines text for options button
+        textSurf, textRect = text_objects("User Guide", text_small, white)
+        textRect.center = (guide_button_width+(100/2)), (guide_button_height+(50/2))
+        gameDisplay.blit(textSurf, textRect) #Defines text for user guide button
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

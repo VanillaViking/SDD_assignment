@@ -29,7 +29,7 @@ class tf():
                     if self.temp_radius < self.radius:
                         pygame.draw.circle(self.display, (self.col), (int(self.x),int(self.y)), self.radius, 1)
                         pygame.draw.circle(self.display, (190,0,230), (int(self.x),int(self.y)), int(self.temp_radius))
-                        self.temp_radius += 0.5
+                        self.temp_radius += 0.9
                     else:
                         self.coloured = True
                         pygame.draw.circle(self.display, (190,0,230), (int(self.x),int(self.y)), int(self.radius))
@@ -44,7 +44,7 @@ class tf():
                     #for f in range(self.radius + 1,0,-1):
                     if self.temp_radius > 0:
                         pygame.draw.circle(self.display, (190,0, 230), (int(self.x),int(self.y)), int(self.temp_radius))
-                        self.temp_radius -= 0.5
+                        self.temp_radius -= 0.9
                     else:
                         self.coloured = False
                     

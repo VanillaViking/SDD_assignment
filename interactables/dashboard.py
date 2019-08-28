@@ -22,7 +22,7 @@ class dashboard():
         self.p1_sets_won = p1_sets_won
         self.p2_sets_won = p2_sets_won
  
-        self.bg = button((20,20,90,120), (20,20,90,120), 0, self.display.get_height()* 5/6, self.display.get_width(),self.display.get_height()/6, "")
+        self.bg = button((20,20,90,120), (20,20,90,120), 0, self.display.get_height()* 5/6, self.display.get_width(),self.display.get_height()/6, "", (0,0,0), 30, 0, True, False)
         
 
     def draw(self):

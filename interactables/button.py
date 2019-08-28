@@ -5,7 +5,7 @@ pygame.font.init()
 
 class button():
   """class for simplifying the use of buttons"""
-  def __init__(self, real_col, change_col, x, y, w, h, text, text_col=(0,0,0), font_size=(30), wrapping=0, center=True):
+  def __init__(self, real_col, change_col, x, y, w, h, text, text_col=(0,0,0), font_size=(30), wrapping=0, center=True, anim=True):
     arial = pygame.font.SysFont('Arial', font_size)
     self.real_col = real_col
     self.change_col = change_col
@@ -16,7 +16,7 @@ class button():
     self.pressed = False
     self.wrapping = wrapping
     self.wrapped = [] 
-
+    self.anim = anim 
     #text wrapping inside the button
     if self.wrapping:
       self.text = []
@@ -47,7 +47,14 @@ class button():
     for line in self.text:
       DISPLAY.blit(line, (self.rect.center[0] - (line.get_width()/2), ypos))
       ypos += 30
-  
+    if self.anim:
+        if self.isOver(pygame.mouse.get_pos()):
+           if self.colour[3] < self.change_col[3]:
+               self.colour[3] += 10
+        else:
+           if self.colour[3] > 100: #using 100 because self.real_col did not work
+               self.colour[3] -= 10 
+
 
   def isOver(self, mouse_pos):
     if self.rect.collidepoint(mouse_pos[0], mouse_pos[1]):
@@ -57,11 +64,7 @@ class button():
   
 
   def update(self, event):
-    if event.type == pygame.MOUSEMOTION:
-        if self.isOver(pygame.mouse.get_pos()):
-            self.colour = self.change_col
-        else:
-            self.colour = self.real_col
+    #if event.type == pygame.MOUSEMOTION:
     if event.type == pygame.MOUSEBUTTONDOWN:
         if self.isOver(pygame.mouse.get_pos()):
             self.pressed = True

@@ -39,10 +39,10 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
     p2_score = 0
     #BUTTONS
     
-    p1_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()/4) - 25, 50, 50, "-")
-    p1_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()/4) - 25, 50, 50, "+")
-    p2_left_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, "-")
-    p2_right_btn = button((255,255,255,100), (255,255, 255,190), (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, "+")
+    p1_left_btn = button([255,255,255,100], [255,255, 255,190], (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()/4) - 25, 50, 50, "-")
+    p1_right_btn = button([255,255,255,100], [255,255, 255,190], (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()/4) - 25, 50, 50, "+")
+    p2_left_btn = button([255,255,255,100], [255,255, 255,190], (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, "-")
+    p2_right_btn = button([255,255,255,100], [255,255, 255,190], (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, "+")
 
     #DASHBOARD
     dash = dashboard(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets)

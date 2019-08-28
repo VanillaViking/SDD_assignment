@@ -13,7 +13,7 @@ def draw(DISPLAY):
         text += line   
     print(text)
     bg_image = pygame.transform.scale(pygame.image.load("pictures/tennnis.jpg"), (DISPLAY.get_width(),DISPLAY.get_height()))
-    back_button = button((255,255,255,100), (255,255, 255,190), (9*DISPLAY.get_width() /10) - 100,     ((9 * DISPLAY.get_height())/10)-(37), 200, 75, "OK",(0,0,0,255)) #back
+    back_button = button([255,255,255,100], [255,255, 255,190], (9*DISPLAY.get_width() /10) - 100,     ((9 * DISPLAY.get_height())/10)-(37), 200, 75, "OK",(0,0,0,255)) #back
     
     while not back_button.pressed:
         pygame.display.update() 

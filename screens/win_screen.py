@@ -24,7 +24,7 @@ def msg(DISPLAY, text, font, colour, pos):
 
 def win_loop(DISPLAY, winning_player, player1_name, player2_name, num_sets, score_list): #displays winning text
     bg = pygame.transform.scale(pygame.image.load("pictures/tennnis.jpg"), (DISPLAY.get_width(),DISPLAY.get_height()))
-    exit_btn = button((255,255,255,100), (255,255, 255,190), (DISPLAY.get_width() /2) - 100, (DISPLAY.get_height()* 7/8)-(37), 200, 75, "Exit",(0,0,0,255))
+    exit_btn = button([255,255,255,100], [255,255, 255,190], (DISPLAY.get_width() /2) - 100, (DISPLAY.get_height()* 7/8)-(37), 200, 75, "Exit",(0,0,0,255))
 
     while not exit_btn.pressed:
         pygame.display.update()

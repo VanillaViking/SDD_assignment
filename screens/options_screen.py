@@ -1,6 +1,7 @@
 import pygame
 from button import *
 from slider import *
+from truefalse import *
 
 #FONTS
 large_font = pygame.font.SysFont('Arial', 40)
@@ -37,15 +38,19 @@ def draw(DISPLAY, volume):
     settings_res_numbers = small_font.render(res_numbers, True, (255,255,255) )
 
     #BUTTONS
-    exit_btn = button((255,255,255,100), (255,255, 255,190), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 85, 200, 75, "Save & Restart", (0,0,0), 25) #obj 0
-    cancel_btn = button((255,255,255,100), (255,255, 255,190), (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 165, 200, 75, "Cancel")
+    exit_btn = button([255,255,255,100], [255,255, 255,190], (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 85, 200, 75, "Save & Restart", (0,0,0), 25) #obj 0
+    cancel_btn = button([255,255,255,100], [255,255, 255,190], (8*DISPLAY.get_width()/9) - 100, (8 * DISPLAY.get_height()/9) - 165, 200, 75, "Cancel")
 
-    left_btn = button((255,255,255,100), (255,255, 255,190), (1*DISPLAY.get_width()/2) - 125, (1 * DISPLAY.get_height()/4) - 25, 50, 50, "<") 
-    right_btn = button((255,255,255,100), (255,255, 255,190), (1*DISPLAY.get_width()/2) + 75, (1 * DISPLAY.get_height()/4) - 25, 50, 50, ">") 
+    left_btn = button([255,255,255,100], [255,255, 255,190], (1*DISPLAY.get_width()/2) - 125, (1 * DISPLAY.get_height()/4) - 25, 50, 50, "<") 
+    right_btn = button([255,255,255,100], [255,255, 255,190], (1*DISPLAY.get_width()/2) + 75, (1 * DISPLAY.get_height()/4) - 25, 50, 50, ">") 
 
     #SLIDER
     volume_slider = slider(DISPLAY, (255,255,255), (DISPLAY.get_width()/2 - 125, DISPLAY.get_height()/2 - 10, 200, 20)) 
     volume_slider.set_value(volume)    
+
+    #RADIO
+    help_yesno = tf(DISPLAY, DISPLAY.get_width()* 3/4, DISPLAY.get_height() * 3/4, 5, "", (255,255,255)) 
+
     while not exit_btn.pressed and not cancel_btn.pressed:
         pygame.display.update()
         DISPLAY.blit(bg_image, (0,0))

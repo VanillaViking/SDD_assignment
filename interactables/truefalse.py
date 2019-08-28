@@ -16,6 +16,7 @@ class tf():
         self.change_col = (190,0, 230)
         self.text = text = FONT.render(text, True, (255,255,255))
         self.radius = radius
+        self.temp_radius = 0
         self.coloured = False
         self.clicked = False
 
@@ -24,16 +25,30 @@ class tf():
         if self.active:
             if anim_check:
                 if not self.coloured:
-                    for f in range(self.radius + 1):
-                        pygame.draw.circle(self.display, (190,0, 230), (int(self.x),int(self.y)), f)
-                        pygame.display.update()
-                        time.sleep(0.02)
-                    self.coloured = True
+                    #for f in range(self.radius + 1):
+                    if self.temp_radius < self.radius:
+                        pygame.draw.circle(self.display, (self.col), (int(self.x),int(self.y)), self.radius, 1)
+                        pygame.draw.circle(self.display, (190,0,230), (int(self.x),int(self.y)), int(self.temp_radius))
+                        self.temp_radius += 0.5
+                    else:
+                        self.coloured = True
+                        pygame.draw.circle(self.display, (190,0,230), (int(self.x),int(self.y)), int(self.radius))
+                else:
+                    pygame.draw.circle(self.display, (190,0,230), (int(self.x),int(self.y)), int(self.temp_radius))
+            else:
+                pygame.draw.circle(self.display, (190,0,230), (int(self.x),int(self.y)), int(self.radius))
                 
-            pygame.draw.circle(self.display, (190,0,230), (int(self.x),int(self.y)), self.radius)
         else:
+            if anim_check:
+                if self.coloured:
+                    #for f in range(self.radius + 1,0,-1):
+                    if self.temp_radius > 0:
+                        pygame.draw.circle(self.display, (190,0, 230), (int(self.x),int(self.y)), int(self.temp_radius))
+                        self.temp_radius -= 0.5
+                    else:
+                        self.coloured = False
+                    
             pygame.draw.circle(self.display, (self.col), (int(self.x),int(self.y)), self.radius, 1)
-            self.coloured = False
   
     def activate(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:

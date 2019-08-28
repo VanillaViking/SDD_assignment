@@ -44,12 +44,12 @@ def draw(DISPLAY):
         DISPLAY.blit(bg_image, (0,0))
         cont_button.draw(DISPLAY)
         back_button.draw(DISPLAY)
-        doubles.draw(False)
+        doubles.draw(True)
         DISPLAY.blit(doubles_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - doubles_text.get_height()/2))
         player1_name.draw()
         player2_name.draw()
-        sets_3.draw(False)
-        sets_5.draw(False)
+        sets_3.draw(True)
+        sets_5.draw(True)
 
         if doubles.active: #display either "player" or "team" depending on if doubles is checked. 
             DISPLAY.blit(team1_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - team1_text.get_height()/2 + 100))

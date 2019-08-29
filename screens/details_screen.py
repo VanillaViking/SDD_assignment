@@ -23,7 +23,7 @@ def draw(DISPLAY):
     player2_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 200-37, 350, 75,"",(255,255,255))
 
     sets = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 300, 100, 75,"",(255,255,255))
-    sets_1 = tf(DISPLAY, DISPLAY.get_width() * 5/10, DISPLAY.get_height()/5 + 300, 10, "3", (255,255,255))
+    sets_1 = tf(DISPLAY, DISPLAY.get_width() * 8/10, DISPLAY.get_height()/5 + 300, 10, "1", (255,255,255))
     sets_3 = tf(DISPLAY, DISPLAY.get_width() * 6/10, DISPLAY.get_height()/5 + 300, 10, "3", (255,255,255))
     sets_5 = tf(DISPLAY, DISPLAY.get_width() * 7/10, DISPLAY.get_height()/5+ 300, 10, "5", (255,255,255))
     

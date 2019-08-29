@@ -23,9 +23,9 @@ def draw(DISPLAY):
     player2_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 200-37, 350, 75,"",(255,255,255))
 
     sets = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 300, 100, 75,"",(255,255,255))
-    sets_1 = tf(DISPLAY, DISPLAY.get_width() * 8/10, DISPLAY.get_height()/5 + 300, 10, "1", (255,255,255))
-    sets_3 = tf(DISPLAY, DISPLAY.get_width() * 6/10, DISPLAY.get_height()/5 + 300, 10, "3", (255,255,255))
-    sets_5 = tf(DISPLAY, DISPLAY.get_width() * 7/10, DISPLAY.get_height()/5+ 300, 10, "5", (255,255,255))
+    sets_1 = tf(DISPLAY, DISPLAY.get_width() * 6/10, DISPLAY.get_height()/5 + 300, 10, "1", (255,255,255))
+    sets_3 = tf(DISPLAY, DISPLAY.get_width() * 7/10, DISPLAY.get_height()/5 + 300, 10, "3", (255,255,255))
+    sets_5 = tf(DISPLAY, DISPLAY.get_width() * 8/10, DISPLAY.get_height()/5+ 300, 10, "5", (255,255,255))
     
     #text
     doubles_text = arial.render("Doubles:", True, (255,255,255))
@@ -70,7 +70,8 @@ def draw(DISPLAY):
             doubles.activate(event)
             player1_name.activate(event)
             player2_name.activate(event)
-            sets_3.activate(event)            
+            sets_3.activate(event)
+            sets_1.activate(event) 
             sets_5.activate(event)            
 
             if event.type == pygame.QUIT: #command for quitting the program
@@ -106,4 +107,7 @@ def draw(DISPLAY):
         if sets_5.clicked:
             sets_3.active = False
             sets_1.active = False
+        if sets_1.clicked:
+            sets_3.active = False
+            sets_5.active = False
 

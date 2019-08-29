@@ -1,2 +1,2 @@
-resolution,1366,768
+resolution,1280,720
 volume,0.1

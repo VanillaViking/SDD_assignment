@@ -23,6 +23,7 @@ def draw(DISPLAY):
     player2_name = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 200-37, 350, 75,"",(255,255,255))
 
     sets = text_input(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5 + 300, 100, 75,"",(255,255,255))
+    sets_1 = tf(DISPLAY, DISPLAY.get_width() * 5/10, DISPLAY.get_height()/5 + 300, 10, "3", (255,255,255))
     sets_3 = tf(DISPLAY, DISPLAY.get_width() * 6/10, DISPLAY.get_height()/5 + 300, 10, "3", (255,255,255))
     sets_5 = tf(DISPLAY, DISPLAY.get_width() * 7/10, DISPLAY.get_height()/5+ 300, 10, "5", (255,255,255))
     
@@ -48,6 +49,7 @@ def draw(DISPLAY):
         DISPLAY.blit(doubles_text, ((2 * DISPLAY.get_width()/5), DISPLAY.get_height()/5 - doubles_text.get_height()/2))
         player1_name.draw()
         player2_name.draw()
+        sets_1.draw(True)
         sets_3.draw(True)
         sets_5.draw(True)
 
@@ -71,7 +73,7 @@ def draw(DISPLAY):
             sets_3.activate(event)            
             sets_5.activate(event)            
 
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT: #command for quitting the program
                 quit()
                 pygame.QUIT
             
@@ -80,6 +82,8 @@ def draw(DISPLAY):
                         num_sets = 3
                     elif sets_5.active:
                         num_sets = 5
+                    elif sets_1.active:
+                        num_sets = 1
                     try:
                         return [player1_name.text, player2_name.text, int(num_sets)]
                     except TypeError:
@@ -96,8 +100,10 @@ def draw(DISPLAY):
             count += 1
         
 
-        if sets_3.clicked:
+        if sets_3.clicked: #Deactivates other set options when a set number is selected
             sets_5.active = False
+            sets_1.active = False
         if sets_5.clicked:
             sets_3.active = False
+            sets_1.active = False
 

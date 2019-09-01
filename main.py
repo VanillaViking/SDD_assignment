@@ -43,6 +43,51 @@ pygame.mixer.music.play()
 if resolution:
     DISPLAY = pygame.display.set_mode(resolution)
 
+
+def check_lead(p1_matches, p2_matches): #checking if a player is leading by to in order to win the set
+    if p1_matches - p2_matches >= 2 or p2_matches - p1_matches >= 2:
+        return True
+    else:
+        return False
+
+
+
+#main part of the program: score keeper. 
+def score(sets, player1_name, player2_name):
+    p1_sets_won = 0
+    p2_sets_won = 0
+
+    score_list = []
+
+    for n in range(sets): #calculates the score
+        
+        p1_matches_won = 0
+        p2_matches_won = 0
+        while p1_matches_won < 6 and p2_matches_won < 6 or not check_lead(p1_matches_won, p2_matches_won):      #loops until one of the players have won over 6 matches AND have a 2 point lead. 
+        
+            match_winner = scorescreen.start_loop(DISPLAY, player1_name, player2_name, p1_matches_won, p2_matches_won, p1_sets_won, p2_sets_won, sets, score_list) 
+            if match_winner == "p1":
+                p1_matches_won += 1
+            elif match_winner == "p2":
+                p2_matches_won += 1
+            else:
+                return "back"
+        else:
+            if p1_matches_won > p2_matches_won:
+                p1_sets_won += 1
+            else:
+                p2_sets_won += 1
+        score_list.append([p1_matches_won, p2_matches_won]) #adds the score to the total
+        
+    #if scorescreen.start_loop(DISPLAY) == "end_game":
+
+    if p1_sets_won > p2_sets_won: #checks who the winner is
+        win_screen.win_loop(DISPLAY, "p1", player1_name, player2_name, sets, score_list)
+    elif p2_sets_won > p1_sets_won:
+        win_screen.win_loop(DISPLAY, "p2", player1_name, player2_name, sets, score_list)
+        
+
+
 #----------------------------------------------------
 
 #help_screen.draw(DISPLAY)
@@ -50,10 +95,15 @@ if resolution:
 while True: #loops until player hits "start" in first screen or "save and exit" in options screen.
     start_screen_command = tennis_startscreen.start_loop(DISPLAY) 
     if start_screen_command == "start": #go to details screen
-        details = details_screen.draw(DISPLAY)
-        if details != "back":
-            player1_name, player2_name, sets = details
-            break
+        while True: 
+            details = details_screen.draw(DISPLAY)
+            if details != "back":
+                player1_name, player2_name, sets = details
+                if score(sets, player1_name, player2_name) != "back":
+                    pygame.QUIT
+                    quit()
+            else:
+                break
     elif start_screen_command == "opts": #go to options screen
         if options_screen.draw(DISPLAY, volume) == "exit":
             pygame.QUIT
@@ -63,38 +113,4 @@ while True: #loops until player hits "start" in first screen or "save and exit" 
         help_screen.draw(DISPLAY)
         
 
-def check_lead(p1_matches, p2_matches): #checking if a player is leading by to in order to win the set
-    if p1_matches - p2_matches >= 2 or p2_matches - p1_matches >= 2:
-        return True
-    else:
-        return False
-
-p1_sets_won = 0
-p2_sets_won = 0
-
-score_list = []
-
-for n in range(sets): #calculates the score
-    
-    p1_matches_won = 0
-    p2_matches_won = 0
-    while p1_matches_won < 6 and p2_matches_won < 6 or not check_lead(p1_matches_won, p2_matches_won):      #loops until one of the players have won over 6 matches AND have a 2 point lead. 
-        if scorescreen.start_loop(DISPLAY, player1_name, player2_name, p1_matches_won, p2_matches_won, p1_sets_won, p2_sets_won, sets, score_list) == "p1":
-            p1_matches_won += 1
-        else:
-            p2_matches_won += 1
-    else:
-        if p1_matches_won > p2_matches_won:
-            p1_sets_won += 1
-        else:
-            p2_sets_won += 1
-    score_list.append([p1_matches_won, p2_matches_won]) #adds the score to the total
-    
-#if scorescreen.start_loop(DISPLAY) == "end_game":
-
-if p1_sets_won > p2_sets_won: #checks who the winner is
-    win_screen.win_loop(DISPLAY, "p1", player1_name, player2_name, sets, score_list)
-elif p2_sets_won > p1_sets_won:
-    win_screen.win_loop(DISPLAY, "p2", player1_name, player2_name, sets, score_list)
-    
 

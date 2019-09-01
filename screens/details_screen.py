@@ -11,8 +11,8 @@ def draw(DISPLAY):
     count = 241
     
     num_sets = None
-    cont_button = button([255,255,255,100], [255,255,255,190], (4*DISPLAY.get_width() /5) - 100, ((4 * DISPLAY.get_height())/6)-(37), 200, 75, "Continue",(0,0,0,255)) #continue
-    back_button = button([255,255,255,100], [255,255,255,190], (1*DISPLAY.get_width() /5) - 100, ((4 * DISPLAY.get_height())/6)-(37), 200, 75, "Back",(0,0,0,255)) #back
+    cont_button = button([255,255,255,100], [255,255,255,190], (4*DISPLAY.get_width() /5) - 100, ((5 * DISPLAY.get_height())/6)-(37), 200, 75, "Continue",(0,0,0,255)) #continue
+    back_button = button([255,255,255,100], [255,255,255,190], (1*DISPLAY.get_width() /5) - 100, ((5 * DISPLAY.get_height())/6)-(37), 200, 75, "Back",(0,0,0,255)) #back
     doubles = tf(DISPLAY, 3*DISPLAY.get_width()/5, DISPLAY.get_height()/5, 10, "", (255,255,255)) #whether game is doubles
     
     

@@ -44,6 +44,8 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
     p2_left_btn = button([255,255,255,100], [255,255, 255,190], (1*gameDisplay.get_width()/2) - 125, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, "-")
     p2_right_btn = button([255,255,255,100], [255,255, 255,190], (1*gameDisplay.get_width()/2) + 75, (1 * gameDisplay.get_height()* 2/4) - 25, 50, 50, "+")
 
+    back_btn = button([255,255,255,100], [255,255,255,190], 0, 0, 100, 37, "Back",(0,0,0,255)) #back
+
     #DASHBOARD
     dash = dashboard(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1_sets, p2_sets)
     
@@ -66,6 +68,7 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
         p1_right_btn.draw(gameDisplay)     
         p2_left_btn.draw(gameDisplay)        
         p2_right_btn.draw(gameDisplay)
+        back_btn.draw(gameDisplay)
 
         #Draw dashboard
         dash.draw()
@@ -107,7 +110,10 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
             if p2_score != 0:
                 p2_score -= 1  
             p2_left_btn.pressed = False
- 
+
+        if back_btn.pressed:
+            return "back"
+
         if p1_score >= 3 and p2_score >= 3 and p1_score == p2_score: #Checking for deuce
             msg(gameDisplay,"DEUCE", text_large, (68,252,243), (gameDisplay.get_width()/2, gameDisplay.get_height()* 11/12))
             deuce = True
@@ -143,7 +149,8 @@ def start_loop(gameDisplay, p1_name, p2_name, p1_matches_won, p2_matches_won, p1
             p1_right_btn.update(event)
             p2_left_btn.update(event)
             p2_right_btn.update(event)            
- 
+            back_btn.update(event)            
+
        # clock.tick(30) ##sets frame rate
 #start_loop() ##uncomment when adding to main program
 #pygame.quit() #quit command
